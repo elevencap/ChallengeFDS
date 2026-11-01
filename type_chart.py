@@ -50,17 +50,30 @@ TYPE_CHART: dict[Type, dict[Type, float]] = {
     for i, atk in enumerate(TYPES)
 }
 
+NOTYPE = "notype"  # segnaposto del dataset per il secondo tipo assente
 
-def effectiveness(attacker: Type, *defenders: Type) -> float:
+
+def clean_types(types) -> list[str]:
+    """Rimuove il segnaposto 'notype' da una lista di tipi."""
+    return [t for t in types if t != NOTYPE]
+
+
+def effectiveness(attacker, *defenders) -> float:
+    """Moltiplicatore totale di una mossa di tipo `attacker` contro uno o due tipi difensori.
+
+    Accetta sia Type che stringhe ("fire"); 'notype' tra i difensori viene ignorato.
+    Solleva ValueError se un tipo non esiste (es. attaccante 'notype').
+    """
+    atk = Type(attacker)
     mult = 1.0
     for d in defenders:
-        mult *= TYPE_CHART[attacker][d]
+        if d == NOTYPE:
+            continue
+        mult *= TYPE_CHART[atk][Type(d)]
     return mult
 
 
-
-
-
 if __name__ == "__main__":
-    print(effectiveness(Type.ground, Type.electric))            # 2.0
-
+    print(effectiveness(Type.GROUND, Type.ELECTRIC))             # 2.0
+    print(effectiveness("ground", "flying", "notype"))           # 0.0
+    print(effectiveness("rock", "fire", "flying"))               # 4.0
