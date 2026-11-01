@@ -10,12 +10,21 @@ def retrieve_items():
             battle = json.loads(line)
             for mon in battle.get("p1_team_details", []):
                 item = mon.get("item")
-                if item:  # salta None / stringa vuota
+                if item:
                     items.add(item)
 
     items_list = sorted(items)
     print(len(items_list))
     print(items_list)
 
+import json
+
+with open("train.jsonl", "r", encoding="utf-8") as f:
+    first = json.loads(f.readline())
+
+print(first)
+
+
 if __name__ == "__main__":
-    retrieve_items()
+    #retrieve_items()
+    print(first)
