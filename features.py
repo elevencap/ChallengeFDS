@@ -175,6 +175,7 @@ def side_stats(tl, side, other):
         "first_faint": first_faint,
         "switches": switches,
         "status_frac": np.mean([s["status"] not in ("nostatus", "fnt") for s in states]),
+        "sleep_frac": np.mean([s["status"] == "slp" for s in states]), # <-- NUOVA FEATURE DI STATO SLEEP
         "boost_net": np.mean([sum(s["boosts"][k] for k in BOOSTS) for s in states]),
         "bp_mean": np.mean([m["base_power"] for m, _ in dmg]) if dmg else 0.0,
         "status_move_frac": (len(used) - len(dmg)) / max(len(used), 1),
@@ -197,12 +198,14 @@ def timeline_features(b):
         "active_hp_last5_diff": d[-5:].mean(),
         "active_hp_last_diff": d[-1],
         "status_pressure": o["status_frac"] - a["status_frac"],  # status subiti dal rivale - miei
+        "sleep_pressure": o["sleep_frac"] - a["sleep_frac"],    # <-- NUOVA DIFFERENZA DI SLEEP (avversario - miei)
         "switches_diff": a["switches"] - o["switches"],
         "boost_diff": a["boost_net"] - o["boost_net"],
         "bp_diff": a["bp_mean"] - o["bp_mean"],
         "status_move_diff": a["status_move_frac"] - o["status_move_frac"],
         "move_eff_diff": a["move_eff"] - o["move_eff"],
     }
+
 
 
 def flatten(b):
