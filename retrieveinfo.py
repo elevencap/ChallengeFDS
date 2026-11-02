@@ -1,5 +1,11 @@
 import json
 from collections import Counter
+import pandas as pd
+import numpy as np
+from sklearn.feature_selection import f_classif
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.metrics import classification_report, roc_auc_score, accuracy_score
 '''
 def retrieve_items():
     items = set()
@@ -68,7 +74,7 @@ def count_turns(path):
     for n_turns, n in sorted(counts.items()):
         print(f"  {n_turns:>3} turni  {n:>6}  {n / total:6.1%}")
     return counts
-'''
+
 
 
 
@@ -141,14 +147,111 @@ def analizza_status_da_dataset(file_path):
     print(f"  - Volte rilevato come status: {freeze_inflicted}")
     print(f"  - Tasso di successo sulle mosse usate: {pct_freeze_per_attempt:.2f}%")
     print(f"  - Percentuale sul totale dei turni: {pct_freeze_total:.2f}%")
+'''
+ 
 
-# Esegui la funzione puntando al tuo file:
-# analizza_status_da_dataset("train.jsonl")
 
-# Esempio di utilizzo:
-# analizza_status_pokemon("battles.json")
+def evaluate_f_scores(input_csv="features_train.csv", output_csv="f_scores.csv"):
+    # 1. Carica il dataset delle feature
+    df = pd.read_csv(input_csv)
+    
+    if "target" not in df.columns:
+        raise ValueError("Il colonna 'target' non è presente nel dataset.")
+    
+    # 2. Separa feature (X) e target (y)
+    # Escludiamo eventuali ID o colonne non numeriche/non-feature
+    ignore_cols = ["battle_id", "target"]
+    feature_cols = [c for c in df.columns if c not in ignore_cols]
+    
+    X = df[feature_cols]
+    y = df["target"]
+    
+    # Gestione eventuali valori mancanti (NaN) con l'imputazione della media
+    if X.isnull().values.any():
+        X = X.fillna(X.mean())
+    
+    # 3. Calcolo ANOVA F-score e p-value con f_classif
+    f_values, p_values = f_classif(X, y)
+    
+    # 4. Creazione DataFrame dei risultati
+    # 4. Creazione DataFrame dei risultati (MODIFICATO: ascending=True)
+    results_df = pd.DataFrame({
+        "feature": feature_cols,
+        "f_score": f_values,
+        "p_value": p_values
+    })
+    
+    # Ordina per F-score crescente (le feature meno discriminanti in alto)
+    results_df = results_df.sort_values(by="f_score", ascending=True).reset_index(drop=True)
+    
+    # 5. Salva i risultati su file CSV
+    results_df.to_csv(output_csv, index=False)
+    
+    print(f"---------------F-SCORE------------")
+    print("\nTop 15 Feature PEGGIORI con F-score più basso:")
+    print(results_df.head(15).to_string(index=False))
+
+
+def train_and_evaluate_tree_model(input_csv="features_train.csv", output_csv="tree_feature_importances.csv"):
+    # 1. Carica il dataset delle feature
+    df = pd.read_csv(input_csv)
+    
+    if "target" not in df.columns:
+        raise ValueError("La colonna 'target' non è presente nel dataset.")
+    
+    # 2. Separa feature (X) e target (y)
+    ignore_cols = ["battle_id", "target"]
+    feature_cols = [c for c in df.columns if c not in ignore_cols]
+    
+    X = df[feature_cols]
+    y = df["target"]
+    
+    # Imputazione dei valori mancanti con la media (se presenti)
+    if X.isnull().values.any():
+        X = X.fillna(X.mean())
+    
+    # 3. Inizializza e addestra un modello a blocchi / basato su alberi (Random Forest)
+    # Usiamo 200 alberi con una profondità massima per evitare overfitting
+    model = RandomForestClassifier(
+        n_estimators=200,
+        max_depth=10,
+        random_state=42,
+        n_jobs=-1
+    )
+    
+    # 4. Valutazione in Cross-Validation (5-fold) per verificare la qualità del modello
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    cv_acc = cross_val_score(model, X, y, cv=cv, scoring='accuracy')
+    cv_auc = cross_val_score(model, X, y, cv=cv, scoring='roc_auc')
+    
+    print("--- Performance del Modello in Cross-Validation (5-Fold) ---")
+    print(f"Accuracy media: {cv_acc.mean():.4f} (+/- {cv_acc.std():.4f})")
+    print(f"ROC-AUC media:  {cv_auc.mean():.4f} (+/- {cv_auc.std():.4f})\n")
+    
+    # 5. Fit finale sull'intero dataset di train
+    model.fit(X, y)
+    
+# 6. Estrazione delle feature importances (MODIFICATO: ascending=True)
+    importances = model.feature_importances_
+    
+    results_df = pd.DataFrame({
+        "feature": feature_cols,
+        "importance": importances
+    }).sort_values(by="importance", ascending=True).reset_index(drop=True)
+    
+    # Salva le importanze su file CSV
+    results_df.to_csv(output_csv, index=False)
+    
+    print(f"--------ALBERO------------")
+    print("\nTop 15 Feature PEGGIORI con importanza minore:")
+    print(results_df.head(15).to_string(index=False))
+
 if __name__ == "__main__":
-    analizza_status_da_dataset("train.jsonl")
-    ###count_turns("train.jsonl")
-    ###count_turns("test.jsonl")
-    pass
+    try:
+        train_and_evaluate_tree_model()
+    except FileNotFoundError:
+        print("File 'features_train.csv' non trovato. Generalo prima tramite features.py!")
+    try:
+            evaluate_f_scores()
+    except FileNotFoundError:
+        print("File 'features_train.csv' non trovato. Assicurati di aver generato prima il CSV con features.py!")

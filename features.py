@@ -73,7 +73,7 @@ def static_features(b):
 
     f = {
         "n_faster_than_lead": sum(m["base_spe"] > lead["base_spe"] for m in team),
-        "n_slower_than_lead": sum(m["base_spe"] < lead["base_spe"] for m in team),
+        #"n_slower_than_lead": sum(m["base_spe"] < lead["base_spe"] for m in team),
         "phys_bulk_diff": np.mean([phys_bulk(m) for m in team]) - phys_bulk(lead),
         "spec_bulk_diff": np.mean([spec_bulk(m) for m in team]) - spec_bulk(lead),
         "n_quad_weak": sum(has_quad_weakness(real_types(m["types"])) for m in team),
