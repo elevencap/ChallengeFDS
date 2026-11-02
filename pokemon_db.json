@@ -1,0 +1,4042 @@
+{
+  "_global": {
+    "base_atk": 70.74493927125506,
+    "base_def": 68.72064777327935,
+    "base_hp": 66.71255060728745,
+    "base_spa": 66.77327935222672,
+    "base_spd": 68.37651821862349,
+    "base_spe": 66.2914979757085
+  },
+  "abra": {
+    "base_atk": 20.0,
+    "base_def": 15.0,
+    "base_hp": 25.0,
+    "base_spa": 105.0,
+    "base_spd": 55.0,
+    "base_spe": 90.0,
+    "n_p1_team": 18,
+    "n_p2_lead": 4,
+    "n_p2_seen": 11,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "aerodactyl": {
+    "base_atk": 105.0,
+    "base_def": 65.0,
+    "base_hp": 80.0,
+    "base_spa": 60.0,
+    "base_spd": 75.0,
+    "base_spe": 130.0,
+    "n_p1_team": 192,
+    "n_p2_lead": 12,
+    "n_p2_seen": 162,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "rock"
+    ]
+  },
+  "aipom": {
+    "base_atk": 70.0,
+    "base_def": 55.0,
+    "base_hp": 55.0,
+    "base_spa": 40.0,
+    "base_spd": 55.0,
+    "base_spe": 85.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 4,
+    "n_p2_seen": 10,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "alakazam": {
+    "base_atk": 50.0,
+    "base_def": 45.0,
+    "base_hp": 55.0,
+    "base_spa": 135.0,
+    "base_spd": 85.0,
+    "base_spe": 120.0,
+    "n_p1_team": 600,
+    "n_p2_lead": 99,
+    "n_p2_seen": 508,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "alakazammega": {
+    "base_atk": 50.0,
+    "base_def": 65.0,
+    "base_hp": 55.0,
+    "base_spa": 175.0,
+    "base_spd": 95.0,
+    "base_spe": 150.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "alakazite",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "ampharos": {
+    "base_atk": 75.0,
+    "base_def": 75.0,
+    "base_hp": 90.0,
+    "base_spa": 115.0,
+    "base_spd": 90.0,
+    "base_spe": 55.0,
+    "n_p1_team": 226,
+    "n_p2_lead": 69,
+    "n_p2_seen": 202,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "arbok": {
+    "base_atk": 85.0,
+    "base_def": 69.0,
+    "base_hp": 60.0,
+    "base_spa": 65.0,
+    "base_spd": 79.0,
+    "base_spe": 80.0,
+    "n_p1_team": 18,
+    "n_p2_lead": 10,
+    "n_p2_seen": 23,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "arcanine": {
+    "base_atk": 110.0,
+    "base_def": 80.0,
+    "base_hp": 90.0,
+    "base_spa": 100.0,
+    "base_spd": 80.0,
+    "base_spe": 95.0,
+    "n_p1_team": 113,
+    "n_p2_lead": 6,
+    "n_p2_seen": 100,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "ariados": {
+    "base_atk": 90.0,
+    "base_def": 70.0,
+    "base_hp": 70.0,
+    "base_spa": 60.0,
+    "base_spd": 60.0,
+    "base_spe": 40.0,
+    "n_p1_team": 21,
+    "n_p2_lead": 1,
+    "n_p2_seen": 11,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "poison"
+    ]
+  },
+  "articuno": {
+    "base_atk": 85.0,
+    "base_def": 100.0,
+    "base_hp": 90.0,
+    "base_spa": 95.0,
+    "base_spd": 125.0,
+    "base_spe": 85.0,
+    "n_p1_team": 111,
+    "n_p2_lead": 15,
+    "n_p2_seen": 110,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "ice"
+    ]
+  },
+  "azumarill": {
+    "base_atk": 50.0,
+    "base_def": 80.0,
+    "base_hp": 100.0,
+    "base_spa": 50.0,
+    "base_spd": 80.0,
+    "base_spe": 50.0,
+    "n_p1_team": 14,
+    "n_p2_lead": 1,
+    "n_p2_seen": 12,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "bayleef": {
+    "base_atk": 62.0,
+    "base_def": 80.0,
+    "base_hp": 60.0,
+    "base_spa": 63.0,
+    "base_spd": 80.0,
+    "base_spe": 60.0,
+    "n_p1_team": 29,
+    "n_p2_lead": 0,
+    "n_p2_seen": 24,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "beedrill": {
+    "base_atk": 80.0,
+    "base_def": 40.0,
+    "base_hp": 65.0,
+    "base_spa": 45.0,
+    "base_spd": 80.0,
+    "base_spe": 75.0,
+    "n_p1_team": 13,
+    "n_p2_lead": 1,
+    "n_p2_seen": 8,
+    "top_item": "poisonbarb",
+    "types": [
+      "bug",
+      "poison"
+    ]
+  },
+  "bellossom": {
+    "base_atk": 80.0,
+    "base_def": 85.0,
+    "base_hp": 75.0,
+    "base_spa": 90.0,
+    "base_spd": 100.0,
+    "base_spe": 50.0,
+    "n_p1_team": 64,
+    "n_p2_lead": 10,
+    "n_p2_seen": 59,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "bellsprout": {
+    "base_atk": 75.0,
+    "base_def": 35.0,
+    "base_hp": 50.0,
+    "base_spa": 70.0,
+    "base_spd": 30.0,
+    "base_spe": 40.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "oranberry",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "blastoise": {
+    "base_atk": 83.0,
+    "base_def": 100.0,
+    "base_hp": 79.0,
+    "base_spa": 85.0,
+    "base_spd": 105.0,
+    "base_spe": 78.0,
+    "n_p1_team": 184,
+    "n_p2_lead": 16,
+    "n_p2_seen": 158,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "blissey": {
+    "base_atk": 10.0,
+    "base_def": 10.0,
+    "base_hp": 255.0,
+    "base_spa": 75.0,
+    "base_spd": 135.0,
+    "base_spe": 55.0,
+    "n_p1_team": 1185,
+    "n_p2_lead": 102,
+    "n_p2_seen": 1045,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "bulbasaur": {
+    "base_atk": 49.0,
+    "base_def": 49.0,
+    "base_hp": 45.0,
+    "base_spa": 65.0,
+    "base_spd": 65.0,
+    "base_spe": 45.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "butterfree": {
+    "base_atk": 45.0,
+    "base_def": 50.0,
+    "base_hp": 60.0,
+    "base_spa": 80.0,
+    "base_spd": 80.0,
+    "base_spe": 70.0,
+    "n_p1_team": 13,
+    "n_p2_lead": 3,
+    "n_p2_seen": 11,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "flying"
+    ]
+  },
+  "caterpie": {
+    "base_atk": 30.0,
+    "base_def": 35.0,
+    "base_hp": 45.0,
+    "base_spa": 20.0,
+    "base_spd": 20.0,
+    "base_spe": 45.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "notype"
+    ]
+  },
+  "celebi": {
+    "base_atk": 100.0,
+    "base_def": 100.0,
+    "base_hp": 100.0,
+    "base_spa": 100.0,
+    "base_spd": 100.0,
+    "base_spe": 100.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "psychic"
+    ]
+  },
+  "chansey": {
+    "base_atk": 5.0,
+    "base_def": 5.0,
+    "base_hp": 250.0,
+    "base_spa": 35.0,
+    "base_spd": 105.0,
+    "base_spe": 50.0,
+    "n_p1_team": 85,
+    "n_p2_lead": 5,
+    "n_p2_seen": 73,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "charizard": {
+    "base_atk": 84.0,
+    "base_def": 78.0,
+    "base_hp": 78.0,
+    "base_spa": 109.0,
+    "base_spd": 85.0,
+    "base_spe": 100.0,
+    "n_p1_team": 603,
+    "n_p2_lead": 30,
+    "n_p2_seen": 441,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "flying"
+    ]
+  },
+  "charizardmegay": {
+    "base_atk": 70.74493927125506,
+    "base_def": 68.72064777327935,
+    "base_hp": 66.71255060728745,
+    "base_spa": 66.77327935222672,
+    "base_spd": 68.37651821862349,
+    "base_spe": 66.2914979757085,
+    "n_p1_team": 0,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "stats_imputed": true,
+    "types": [
+      "notype",
+      "notype"
+    ]
+  },
+  "charmander": {
+    "base_atk": 52.0,
+    "base_def": 43.0,
+    "base_hp": 39.0,
+    "base_spa": 60.0,
+    "base_spd": 50.0,
+    "base_spe": 65.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 1,
+    "n_p2_seen": 4,
+    "top_item": "berryjuice",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "charmeleon": {
+    "base_atk": 64.0,
+    "base_def": 58.0,
+    "base_hp": 58.0,
+    "base_spa": 80.0,
+    "base_spd": 65.0,
+    "base_spe": 80.0,
+    "n_p1_team": 11,
+    "n_p2_lead": 0,
+    "n_p2_seen": 15,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "chikorita": {
+    "base_atk": 49.0,
+    "base_def": 65.0,
+    "base_hp": 45.0,
+    "base_spa": 49.0,
+    "base_spd": 65.0,
+    "base_spe": 45.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 2,
+    "n_p2_seen": 8,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "chinchou": {
+    "base_atk": 38.0,
+    "base_def": 38.0,
+    "base_hp": 75.0,
+    "base_spa": 56.0,
+    "base_spd": 56.0,
+    "base_spe": 67.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "berryjuice",
+    "types": [
+      "electric",
+      "water"
+    ]
+  },
+  "clefable": {
+    "base_atk": 70.0,
+    "base_def": 73.0,
+    "base_hp": 95.0,
+    "base_spa": 85.0,
+    "base_spd": 90.0,
+    "base_spe": 60.0,
+    "n_p1_team": 178,
+    "n_p2_lead": 12,
+    "n_p2_seen": 119,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "clefairy": {
+    "base_atk": 45.0,
+    "base_def": 48.0,
+    "base_hp": 70.0,
+    "base_spa": 60.0,
+    "base_spd": 65.0,
+    "base_spe": 35.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 3,
+    "n_p2_seen": 12,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "cleffa": {
+    "base_atk": 25.0,
+    "base_def": 28.0,
+    "base_hp": 50.0,
+    "base_spa": 45.0,
+    "base_spd": 55.0,
+    "base_spe": 15.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "cloyster": {
+    "base_atk": 95.0,
+    "base_def": 180.0,
+    "base_hp": 50.0,
+    "base_spa": 85.0,
+    "base_spd": 45.0,
+    "base_spe": 70.0,
+    "n_p1_team": 8171,
+    "n_p2_lead": 1019,
+    "n_p2_seen": 7747,
+    "top_item": "leftovers",
+    "types": [
+      "ice",
+      "water"
+    ]
+  },
+  "corsola": {
+    "base_atk": 55.0,
+    "base_def": 85.0,
+    "base_hp": 55.0,
+    "base_spa": 65.0,
+    "base_spd": 85.0,
+    "base_spe": 35.0,
+    "n_p1_team": 10,
+    "n_p2_lead": 0,
+    "n_p2_seen": 10,
+    "top_item": "leftovers",
+    "types": [
+      "rock",
+      "water"
+    ]
+  },
+  "crobat": {
+    "base_atk": 90.0,
+    "base_def": 80.0,
+    "base_hp": 85.0,
+    "base_spa": 70.0,
+    "base_spd": 80.0,
+    "base_spe": 130.0,
+    "n_p1_team": 124,
+    "n_p2_lead": 13,
+    "n_p2_seen": 77,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "poison"
+    ]
+  },
+  "croconaw": {
+    "base_atk": 80.0,
+    "base_def": 80.0,
+    "base_hp": 65.0,
+    "base_spa": 59.0,
+    "base_spd": 63.0,
+    "base_spe": 58.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 2,
+    "n_p2_seen": 6,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "cubone": {
+    "base_atk": 50.0,
+    "base_def": 95.0,
+    "base_hp": 50.0,
+    "base_spa": 40.0,
+    "base_spd": 50.0,
+    "base_spe": 35.0,
+    "n_p1_team": 17,
+    "n_p2_lead": 2,
+    "n_p2_seen": 11,
+    "top_item": "thickclub",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "cyndaquil": {
+    "base_atk": 52.0,
+    "base_def": 43.0,
+    "base_hp": 39.0,
+    "base_spa": 60.0,
+    "base_spd": 50.0,
+    "base_spe": 65.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "delibird": {
+    "base_atk": 55.0,
+    "base_def": 45.0,
+    "base_hp": 45.0,
+    "base_spa": 65.0,
+    "base_spd": 45.0,
+    "base_spe": 75.0,
+    "n_p1_team": 28,
+    "n_p2_lead": 18,
+    "n_p2_seen": 26,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "ice"
+    ]
+  },
+  "dewgong": {
+    "base_atk": 70.0,
+    "base_def": 80.0,
+    "base_hp": 90.0,
+    "base_spa": 70.0,
+    "base_spd": 95.0,
+    "base_spe": 70.0,
+    "n_p1_team": 26,
+    "n_p2_lead": 0,
+    "n_p2_seen": 27,
+    "top_item": "leftovers",
+    "types": [
+      "ice",
+      "water"
+    ]
+  },
+  "diglett": {
+    "base_atk": 55.0,
+    "base_def": 25.0,
+    "base_hp": 10.0,
+    "base_spa": 35.0,
+    "base_spd": 45.0,
+    "base_spe": 95.0,
+    "n_p1_team": 10,
+    "n_p2_lead": 0,
+    "n_p2_seen": 14,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "ditto": {
+    "base_atk": 48.0,
+    "base_def": 48.0,
+    "base_hp": 48.0,
+    "base_spa": 48.0,
+    "base_spd": 48.0,
+    "base_spe": 48.0,
+    "n_p1_team": 14,
+    "n_p2_lead": 3,
+    "n_p2_seen": 9,
+    "top_item": "metalpowder",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "dodrio": {
+    "base_atk": 110.0,
+    "base_def": 70.0,
+    "base_hp": 60.0,
+    "base_spa": 60.0,
+    "base_spd": 60.0,
+    "base_spe": 100.0,
+    "n_p1_team": 73,
+    "n_p2_lead": 0,
+    "n_p2_seen": 50,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "doduo": {
+    "base_atk": 85.0,
+    "base_def": 45.0,
+    "base_hp": 35.0,
+    "base_spa": 35.0,
+    "base_spd": 35.0,
+    "base_spe": 75.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "donphan": {
+    "base_atk": 120.0,
+    "base_def": 120.0,
+    "base_hp": 90.0,
+    "base_spa": 60.0,
+    "base_spd": 60.0,
+    "base_spe": 50.0,
+    "n_p1_team": 175,
+    "n_p2_lead": 15,
+    "n_p2_seen": 167,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "dragonair": {
+    "base_atk": 84.0,
+    "base_def": 65.0,
+    "base_hp": 61.0,
+    "base_spa": 70.0,
+    "base_spd": 70.0,
+    "base_spe": 70.0,
+    "n_p1_team": 24,
+    "n_p2_lead": 5,
+    "n_p2_seen": 19,
+    "top_item": "leftovers",
+    "types": [
+      "dragon",
+      "notype"
+    ]
+  },
+  "dragonite": {
+    "base_atk": 134.0,
+    "base_def": 95.0,
+    "base_hp": 91.0,
+    "base_spa": 100.0,
+    "base_spd": 100.0,
+    "base_spe": 80.0,
+    "n_p1_team": 634,
+    "n_p2_lead": 54,
+    "n_p2_seen": 515,
+    "top_item": "leftovers",
+    "types": [
+      "dragon",
+      "flying"
+    ]
+  },
+  "dratini": {
+    "base_atk": 64.0,
+    "base_def": 45.0,
+    "base_hp": 41.0,
+    "base_spa": 50.0,
+    "base_spd": 50.0,
+    "base_spe": 50.0,
+    "n_p1_team": 15,
+    "n_p2_lead": 4,
+    "n_p2_seen": 10,
+    "top_item": "dragonscale",
+    "types": [
+      "dragon",
+      "notype"
+    ]
+  },
+  "drowzee": {
+    "base_atk": 48.0,
+    "base_def": 45.0,
+    "base_hp": 60.0,
+    "base_spa": 43.0,
+    "base_spd": 90.0,
+    "base_spe": 42.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 0,
+    "n_p2_seen": 8,
+    "top_item": "berryjuice",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "dugtrio": {
+    "base_atk": 80.0,
+    "base_def": 50.0,
+    "base_hp": 35.0,
+    "base_spa": 50.0,
+    "base_spd": 70.0,
+    "base_spe": 120.0,
+    "n_p1_team": 82,
+    "n_p2_lead": 2,
+    "n_p2_seen": 66,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "dunsparce": {
+    "base_atk": 70.0,
+    "base_def": 70.0,
+    "base_hp": 100.0,
+    "base_spa": 65.0,
+    "base_spd": 65.0,
+    "base_spe": 45.0,
+    "n_p1_team": 10,
+    "n_p2_lead": 4,
+    "n_p2_seen": 16,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "eevee": {
+    "base_atk": 55.0,
+    "base_def": 50.0,
+    "base_hp": 55.0,
+    "base_spa": 45.0,
+    "base_spd": 65.0,
+    "base_spe": 55.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 1,
+    "n_p2_seen": 9,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "ekans": {
+    "base_atk": 60.0,
+    "base_def": 44.0,
+    "base_hp": 35.0,
+    "base_spa": 40.0,
+    "base_spd": 54.0,
+    "base_spe": 55.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "goldberry",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "electabuzz": {
+    "base_atk": 83.0,
+    "base_def": 57.0,
+    "base_hp": 65.0,
+    "base_spa": 95.0,
+    "base_spd": 85.0,
+    "base_spe": 105.0,
+    "n_p1_team": 134,
+    "n_p2_lead": 35,
+    "n_p2_seen": 107,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "electrode": {
+    "base_atk": 50.0,
+    "base_def": 70.0,
+    "base_hp": 60.0,
+    "base_spa": 80.0,
+    "base_spd": 80.0,
+    "base_spe": 140.0,
+    "n_p1_team": 76,
+    "n_p2_lead": 33,
+    "n_p2_seen": 78,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "elekid": {
+    "base_atk": 63.0,
+    "base_def": 37.0,
+    "base_hp": 45.0,
+    "base_spa": 65.0,
+    "base_spd": 55.0,
+    "base_spe": 95.0,
+    "n_p1_team": 33,
+    "n_p2_lead": 7,
+    "n_p2_seen": 25,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "entei": {
+    "base_atk": 115.0,
+    "base_def": 85.0,
+    "base_hp": 115.0,
+    "base_spa": 90.0,
+    "base_spd": 75.0,
+    "base_spe": 100.0,
+    "n_p1_team": 110,
+    "n_p2_lead": 12,
+    "n_p2_seen": 97,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "espeon": {
+    "base_atk": 65.0,
+    "base_def": 60.0,
+    "base_hp": 65.0,
+    "base_spa": 130.0,
+    "base_spd": 95.0,
+    "base_spe": 110.0,
+    "n_p1_team": 504,
+    "n_p2_lead": 33,
+    "n_p2_seen": 377,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "exeggcute": {
+    "base_atk": 40.0,
+    "base_def": 80.0,
+    "base_hp": 60.0,
+    "base_spa": 60.0,
+    "base_spd": 45.0,
+    "base_spe": 40.0,
+    "n_p1_team": 15,
+    "n_p2_lead": 2,
+    "n_p2_seen": 19,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "psychic"
+    ]
+  },
+  "exeggutor": {
+    "base_atk": 95.0,
+    "base_def": 85.0,
+    "base_hp": 95.0,
+    "base_spa": 125.0,
+    "base_spd": 65.0,
+    "base_spe": 55.0,
+    "n_p1_team": 3961,
+    "n_p2_lead": 1071,
+    "n_p2_seen": 3563,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "psychic"
+    ]
+  },
+  "farfetchd": {
+    "base_atk": 65.0,
+    "base_def": 55.0,
+    "base_hp": 52.0,
+    "base_spa": 58.0,
+    "base_spd": 62.0,
+    "base_spe": 60.0,
+    "n_p1_team": 28,
+    "n_p2_lead": 3,
+    "n_p2_seen": 7,
+    "top_item": "stick",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "fearow": {
+    "base_atk": 90.0,
+    "base_def": 65.0,
+    "base_hp": 65.0,
+    "base_spa": 61.0,
+    "base_spd": 61.0,
+    "base_spe": 100.0,
+    "n_p1_team": 18,
+    "n_p2_lead": 4,
+    "n_p2_seen": 15,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "feraligatr": {
+    "base_atk": 105.0,
+    "base_def": 100.0,
+    "base_hp": 85.0,
+    "base_spa": 79.0,
+    "base_spd": 83.0,
+    "base_spe": 78.0,
+    "n_p1_team": 128,
+    "n_p2_lead": 24,
+    "n_p2_seen": 116,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "flaaffy": {
+    "base_atk": 55.0,
+    "base_def": 55.0,
+    "base_hp": 70.0,
+    "base_spa": 80.0,
+    "base_spd": 60.0,
+    "base_spe": 45.0,
+    "n_p1_team": 12,
+    "n_p2_lead": 5,
+    "n_p2_seen": 12,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "flareon": {
+    "base_atk": 130.0,
+    "base_def": 60.0,
+    "base_hp": 65.0,
+    "base_spa": 95.0,
+    "base_spd": 110.0,
+    "base_spe": 65.0,
+    "n_p1_team": 31,
+    "n_p2_lead": 3,
+    "n_p2_seen": 32,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "forretress": {
+    "base_atk": 90.0,
+    "base_def": 140.0,
+    "base_hp": 75.0,
+    "base_spa": 60.0,
+    "base_spd": 60.0,
+    "base_spe": 40.0,
+    "n_p1_team": 2574,
+    "n_p2_lead": 575,
+    "n_p2_seen": 2519,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "steel"
+    ]
+  },
+  "furret": {
+    "base_atk": 76.0,
+    "base_def": 64.0,
+    "base_hp": 85.0,
+    "base_spa": 45.0,
+    "base_spd": 55.0,
+    "base_spe": 90.0,
+    "n_p1_team": 14,
+    "n_p2_lead": 4,
+    "n_p2_seen": 14,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "gastly": {
+    "base_atk": 35.0,
+    "base_def": 30.0,
+    "base_hp": 30.0,
+    "base_spa": 100.0,
+    "base_spd": 35.0,
+    "base_spe": 80.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 6,
+    "n_p2_seen": 13,
+    "top_item": "leftovers",
+    "types": [
+      "ghost",
+      "poison"
+    ]
+  },
+  "gengar": {
+    "base_atk": 65.0,
+    "base_def": 60.0,
+    "base_hp": 60.0,
+    "base_spa": 130.0,
+    "base_spd": 75.0,
+    "base_spe": 110.0,
+    "n_p1_team": 3972,
+    "n_p2_lead": 272,
+    "n_p2_seen": 3499,
+    "top_item": "leftovers",
+    "types": [
+      "ghost",
+      "poison"
+    ]
+  },
+  "gengarmega": {
+    "base_atk": 65.0,
+    "base_def": 80.0,
+    "base_hp": 60.0,
+    "base_spa": 170.0,
+    "base_spd": 95.0,
+    "base_spe": 130.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "gengarite",
+    "types": [
+      "ghost",
+      "poison"
+    ]
+  },
+  "geodude": {
+    "base_atk": 80.0,
+    "base_def": 100.0,
+    "base_hp": 40.0,
+    "base_spa": 30.0,
+    "base_spd": 30.0,
+    "base_spe": 20.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 0,
+    "n_p2_seen": 15,
+    "top_item": "berry",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "girafarig": {
+    "base_atk": 80.0,
+    "base_def": 65.0,
+    "base_hp": 70.0,
+    "base_spa": 90.0,
+    "base_spd": 65.0,
+    "base_spe": 85.0,
+    "n_p1_team": 52,
+    "n_p2_lead": 8,
+    "n_p2_seen": 42,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "psychic"
+    ]
+  },
+  "gligar": {
+    "base_atk": 75.0,
+    "base_def": 105.0,
+    "base_hp": 65.0,
+    "base_spa": 35.0,
+    "base_spd": 65.0,
+    "base_spe": 85.0,
+    "n_p1_team": 48,
+    "n_p2_lead": 1,
+    "n_p2_seen": 41,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "ground"
+    ]
+  },
+  "gloom": {
+    "base_atk": 65.0,
+    "base_def": 70.0,
+    "base_hp": 60.0,
+    "base_spa": 85.0,
+    "base_spd": 75.0,
+    "base_spe": 40.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 2,
+    "n_p2_seen": 15,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "golbat": {
+    "base_atk": 80.0,
+    "base_def": 70.0,
+    "base_hp": 75.0,
+    "base_spa": 65.0,
+    "base_spd": 75.0,
+    "base_spe": 90.0,
+    "n_p1_team": 12,
+    "n_p2_lead": 1,
+    "n_p2_seen": 5,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "poison"
+    ]
+  },
+  "goldeen": {
+    "base_atk": 67.0,
+    "base_def": 60.0,
+    "base_hp": 45.0,
+    "base_spa": 35.0,
+    "base_spd": 50.0,
+    "base_spe": 63.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "golduck": {
+    "base_atk": 82.0,
+    "base_def": 78.0,
+    "base_hp": 80.0,
+    "base_spa": 95.0,
+    "base_spd": 80.0,
+    "base_spe": 85.0,
+    "n_p1_team": 25,
+    "n_p2_lead": 3,
+    "n_p2_seen": 13,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "golem": {
+    "base_atk": 110.0,
+    "base_def": 130.0,
+    "base_hp": 80.0,
+    "base_spa": 55.0,
+    "base_spd": 65.0,
+    "base_spe": 45.0,
+    "n_p1_team": 1764,
+    "n_p2_lead": 8,
+    "n_p2_seen": 1547,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "granbull": {
+    "base_atk": 120.0,
+    "base_def": 75.0,
+    "base_hp": 90.0,
+    "base_spa": 60.0,
+    "base_spd": 60.0,
+    "base_spe": 45.0,
+    "n_p1_team": 62,
+    "n_p2_lead": 5,
+    "n_p2_seen": 62,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "graveler": {
+    "base_atk": 95.0,
+    "base_def": 115.0,
+    "base_hp": 55.0,
+    "base_spa": 45.0,
+    "base_spd": 45.0,
+    "base_spe": 35.0,
+    "n_p1_team": 26,
+    "n_p2_lead": 5,
+    "n_p2_seen": 23,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "grimer": {
+    "base_atk": 80.0,
+    "base_def": 50.0,
+    "base_hp": 80.0,
+    "base_spa": 40.0,
+    "base_spd": 50.0,
+    "base_spe": 25.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "growlithe": {
+    "base_atk": 70.0,
+    "base_def": 45.0,
+    "base_hp": 55.0,
+    "base_spa": 70.0,
+    "base_spd": 50.0,
+    "base_spe": 60.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 5,
+    "top_item": "berry",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "gyarados": {
+    "base_atk": 125.0,
+    "base_def": 79.0,
+    "base_hp": 95.0,
+    "base_spa": 60.0,
+    "base_spd": 100.0,
+    "base_spe": 81.0,
+    "n_p1_team": 104,
+    "n_p2_lead": 15,
+    "n_p2_seen": 98,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "water"
+    ]
+  },
+  "haunter": {
+    "base_atk": 50.0,
+    "base_def": 45.0,
+    "base_hp": 45.0,
+    "base_spa": 115.0,
+    "base_spd": 55.0,
+    "base_spe": 95.0,
+    "n_p1_team": 54,
+    "n_p2_lead": 4,
+    "n_p2_seen": 53,
+    "top_item": "leftovers",
+    "types": [
+      "ghost",
+      "poison"
+    ]
+  },
+  "heracross": {
+    "base_atk": 125.0,
+    "base_def": 75.0,
+    "base_hp": 80.0,
+    "base_spa": 40.0,
+    "base_spd": 95.0,
+    "base_spe": 85.0,
+    "n_p1_team": 1112,
+    "n_p2_lead": 57,
+    "n_p2_seen": 884,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "fighting"
+    ]
+  },
+  "hitmonchan": {
+    "base_atk": 105.0,
+    "base_def": 79.0,
+    "base_hp": 50.0,
+    "base_spa": 35.0,
+    "base_spd": 110.0,
+    "base_spe": 76.0,
+    "n_p1_team": 28,
+    "n_p2_lead": 3,
+    "n_p2_seen": 26,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "hitmonlee": {
+    "base_atk": 120.0,
+    "base_def": 53.0,
+    "base_hp": 50.0,
+    "base_spa": 35.0,
+    "base_spd": 110.0,
+    "base_spe": 87.0,
+    "n_p1_team": 52,
+    "n_p2_lead": 3,
+    "n_p2_seen": 34,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "hitmontop": {
+    "base_atk": 95.0,
+    "base_def": 95.0,
+    "base_hp": 50.0,
+    "base_spa": 35.0,
+    "base_spd": 110.0,
+    "base_spe": 70.0,
+    "n_p1_team": 45,
+    "n_p2_lead": 2,
+    "n_p2_seen": 46,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "hooh": {
+    "base_atk": 130.0,
+    "base_def": 90.0,
+    "base_hp": 106.0,
+    "base_spa": 110.0,
+    "base_spd": 154.0,
+    "base_spe": 90.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "flying"
+    ]
+  },
+  "hoothoot": {
+    "base_atk": 30.0,
+    "base_def": 30.0,
+    "base_hp": 60.0,
+    "base_spa": 36.0,
+    "base_spd": 56.0,
+    "base_spe": 50.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "sharpbeak",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "hoppip": {
+    "base_atk": 35.0,
+    "base_def": 40.0,
+    "base_hp": 35.0,
+    "base_spa": 35.0,
+    "base_spd": 55.0,
+    "base_spe": 50.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 2,
+    "n_p2_seen": 3,
+    "top_item": "miracleberry",
+    "types": [
+      "flying",
+      "grass"
+    ]
+  },
+  "horsea": {
+    "base_atk": 40.0,
+    "base_def": 70.0,
+    "base_hp": 30.0,
+    "base_spa": 70.0,
+    "base_spd": 25.0,
+    "base_spe": 60.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "berry",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "houndoom": {
+    "base_atk": 90.0,
+    "base_def": 50.0,
+    "base_hp": 75.0,
+    "base_spa": 110.0,
+    "base_spd": 80.0,
+    "base_spe": 95.0,
+    "n_p1_team": 483,
+    "n_p2_lead": 34,
+    "n_p2_seen": 405,
+    "top_item": "leftovers",
+    "types": [
+      "dark",
+      "fire"
+    ]
+  },
+  "houndour": {
+    "base_atk": 60.0,
+    "base_def": 30.0,
+    "base_hp": 45.0,
+    "base_spa": 80.0,
+    "base_spd": 50.0,
+    "base_spe": 65.0,
+    "n_p1_team": 31,
+    "n_p2_lead": 5,
+    "n_p2_seen": 29,
+    "top_item": "leftovers",
+    "types": [
+      "dark",
+      "fire"
+    ]
+  },
+  "hypno": {
+    "base_atk": 73.0,
+    "base_def": 70.0,
+    "base_hp": 85.0,
+    "base_spa": 73.0,
+    "base_spd": 115.0,
+    "base_spe": 67.0,
+    "n_p1_team": 56,
+    "n_p2_lead": 11,
+    "n_p2_seen": 32,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "igglybuff": {
+    "base_atk": 30.0,
+    "base_def": 15.0,
+    "base_hp": 90.0,
+    "base_spa": 40.0,
+    "base_spd": 20.0,
+    "base_spe": 15.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 2,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "ivysaur": {
+    "base_atk": 62.0,
+    "base_def": 63.0,
+    "base_hp": 60.0,
+    "base_spa": 80.0,
+    "base_spd": 80.0,
+    "base_spe": 60.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 2,
+    "n_p2_seen": 6,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "jigglypuff": {
+    "base_atk": 45.0,
+    "base_def": 20.0,
+    "base_hp": 115.0,
+    "base_spa": 45.0,
+    "base_spd": 25.0,
+    "base_spe": 20.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "jolteon": {
+    "base_atk": 65.0,
+    "base_def": 60.0,
+    "base_hp": 65.0,
+    "base_spa": 110.0,
+    "base_spd": 95.0,
+    "base_spe": 130.0,
+    "n_p1_team": 880,
+    "n_p2_lead": 261,
+    "n_p2_seen": 747,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "jumpluff": {
+    "base_atk": 55.0,
+    "base_def": 70.0,
+    "base_hp": 75.0,
+    "base_spa": 55.0,
+    "base_spd": 85.0,
+    "base_spe": 110.0,
+    "n_p1_team": 127,
+    "n_p2_lead": 33,
+    "n_p2_seen": 111,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "grass"
+    ]
+  },
+  "jynx": {
+    "base_atk": 50.0,
+    "base_def": 35.0,
+    "base_hp": 65.0,
+    "base_spa": 115.0,
+    "base_spd": 95.0,
+    "base_spe": 95.0,
+    "n_p1_team": 1188,
+    "n_p2_lead": 599,
+    "n_p2_seen": 996,
+    "top_item": "leftovers",
+    "types": [
+      "ice",
+      "psychic"
+    ]
+  },
+  "kabuto": {
+    "base_atk": 80.0,
+    "base_def": 90.0,
+    "base_hp": 30.0,
+    "base_spa": 55.0,
+    "base_spd": 45.0,
+    "base_spe": 55.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "berryjuice",
+    "types": [
+      "rock",
+      "water"
+    ]
+  },
+  "kabutops": {
+    "base_atk": 115.0,
+    "base_def": 105.0,
+    "base_hp": 60.0,
+    "base_spa": 65.0,
+    "base_spd": 70.0,
+    "base_spe": 80.0,
+    "n_p1_team": 40,
+    "n_p2_lead": 0,
+    "n_p2_seen": 31,
+    "top_item": "leftovers",
+    "types": [
+      "rock",
+      "water"
+    ]
+  },
+  "kadabra": {
+    "base_atk": 35.0,
+    "base_def": 30.0,
+    "base_hp": 40.0,
+    "base_spa": 120.0,
+    "base_spd": 70.0,
+    "base_spe": 105.0,
+    "n_p1_team": 39,
+    "n_p2_lead": 16,
+    "n_p2_seen": 30,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "kakuna": {
+    "base_atk": 25.0,
+    "base_def": 50.0,
+    "base_hp": 45.0,
+    "base_spa": 25.0,
+    "base_spd": 25.0,
+    "base_spe": 35.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "poison"
+    ]
+  },
+  "kangaskhan": {
+    "base_atk": 95.0,
+    "base_def": 80.0,
+    "base_hp": 105.0,
+    "base_spa": 40.0,
+    "base_spd": 80.0,
+    "base_spe": 90.0,
+    "n_p1_team": 144,
+    "n_p2_lead": 20,
+    "n_p2_seen": 93,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "kingdra": {
+    "base_atk": 95.0,
+    "base_def": 95.0,
+    "base_hp": 75.0,
+    "base_spa": 95.0,
+    "base_spd": 95.0,
+    "base_spe": 85.0,
+    "n_p1_team": 240,
+    "n_p2_lead": 36,
+    "n_p2_seen": 197,
+    "top_item": "leftovers",
+    "types": [
+      "dragon",
+      "water"
+    ]
+  },
+  "kingler": {
+    "base_atk": 130.0,
+    "base_def": 115.0,
+    "base_hp": 55.0,
+    "base_spa": 50.0,
+    "base_spd": 50.0,
+    "base_spe": 75.0,
+    "n_p1_team": 23,
+    "n_p2_lead": 0,
+    "n_p2_seen": 14,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "koffing": {
+    "base_atk": 65.0,
+    "base_def": 95.0,
+    "base_hp": 40.0,
+    "base_spa": 60.0,
+    "base_spd": 45.0,
+    "base_spe": 35.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "krabby": {
+    "base_atk": 105.0,
+    "base_def": 90.0,
+    "base_hp": 30.0,
+    "base_spa": 25.0,
+    "base_spd": 25.0,
+    "base_spe": 50.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "goldberry",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "lanturn": {
+    "base_atk": 58.0,
+    "base_def": 58.0,
+    "base_hp": 125.0,
+    "base_spa": 76.0,
+    "base_spd": 76.0,
+    "base_spe": 67.0,
+    "n_p1_team": 191,
+    "n_p2_lead": 89,
+    "n_p2_seen": 170,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "water"
+    ]
+  },
+  "lapras": {
+    "base_atk": 85.0,
+    "base_def": 80.0,
+    "base_hp": 130.0,
+    "base_spa": 85.0,
+    "base_spd": 95.0,
+    "base_spe": 60.0,
+    "n_p1_team": 167,
+    "n_p2_lead": 14,
+    "n_p2_seen": 130,
+    "top_item": "leftovers",
+    "types": [
+      "ice",
+      "water"
+    ]
+  },
+  "larvitar": {
+    "base_atk": 64.0,
+    "base_def": 50.0,
+    "base_hp": 50.0,
+    "base_spa": 45.0,
+    "base_spd": 50.0,
+    "base_spe": 41.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "ledian": {
+    "base_atk": 35.0,
+    "base_def": 50.0,
+    "base_hp": 55.0,
+    "base_spa": 55.0,
+    "base_spd": 110.0,
+    "base_spe": 85.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 8,
+    "n_p2_seen": 10,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "flying"
+    ]
+  },
+  "ledyba": {
+    "base_atk": 70.74493927125506,
+    "base_def": 68.72064777327935,
+    "base_hp": 66.71255060728745,
+    "base_spa": 66.77327935222672,
+    "base_spd": 68.37651821862349,
+    "base_spe": 66.2914979757085,
+    "n_p1_team": 0,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "stats_imputed": true,
+    "types": [
+      "notype",
+      "notype"
+    ]
+  },
+  "lickitung": {
+    "base_atk": 55.0,
+    "base_def": 75.0,
+    "base_hp": 90.0,
+    "base_spa": 60.0,
+    "base_spd": 75.0,
+    "base_spe": 30.0,
+    "n_p1_team": 27,
+    "n_p2_lead": 1,
+    "n_p2_seen": 16,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "machamp": {
+    "base_atk": 130.0,
+    "base_def": 80.0,
+    "base_hp": 90.0,
+    "base_spa": 65.0,
+    "base_spd": 85.0,
+    "base_spe": 55.0,
+    "n_p1_team": 2599,
+    "n_p2_lead": 70,
+    "n_p2_seen": 2168,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "machoke": {
+    "base_atk": 100.0,
+    "base_def": 70.0,
+    "base_hp": 80.0,
+    "base_spa": 50.0,
+    "base_spd": 60.0,
+    "base_spe": 45.0,
+    "n_p1_team": 20,
+    "n_p2_lead": 0,
+    "n_p2_seen": 18,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "machop": {
+    "base_atk": 80.0,
+    "base_def": 50.0,
+    "base_hp": 70.0,
+    "base_spa": 35.0,
+    "base_spd": 35.0,
+    "base_spe": 35.0,
+    "n_p1_team": 11,
+    "n_p2_lead": 1,
+    "n_p2_seen": 9,
+    "top_item": "berryjuice",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "magby": {
+    "base_atk": 75.0,
+    "base_def": 37.0,
+    "base_hp": 45.0,
+    "base_spa": 70.0,
+    "base_spd": 55.0,
+    "base_spe": 83.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 1,
+    "n_p2_seen": 1,
+    "top_item": "berryjuice",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "magcargo": {
+    "base_atk": 50.0,
+    "base_def": 120.0,
+    "base_hp": 50.0,
+    "base_spa": 80.0,
+    "base_spd": 80.0,
+    "base_spe": 30.0,
+    "n_p1_team": 11,
+    "n_p2_lead": 0,
+    "n_p2_seen": 8,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "rock"
+    ]
+  },
+  "magikarp": {
+    "base_atk": 10.0,
+    "base_def": 55.0,
+    "base_hp": 20.0,
+    "base_spa": 15.0,
+    "base_spd": 20.0,
+    "base_spe": 80.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "magmar": {
+    "base_atk": 95.0,
+    "base_def": 57.0,
+    "base_hp": 65.0,
+    "base_spa": 100.0,
+    "base_spd": 85.0,
+    "base_spe": 93.0,
+    "n_p1_team": 41,
+    "n_p2_lead": 9,
+    "n_p2_seen": 53,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "magnemite": {
+    "base_atk": 35.0,
+    "base_def": 70.0,
+    "base_hp": 25.0,
+    "base_spa": 95.0,
+    "base_spd": 55.0,
+    "base_spe": 45.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 9,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "steel"
+    ]
+  },
+  "magneton": {
+    "base_atk": 60.0,
+    "base_def": 95.0,
+    "base_hp": 50.0,
+    "base_spa": 120.0,
+    "base_spd": 70.0,
+    "base_spe": 70.0,
+    "n_p1_team": 83,
+    "n_p2_lead": 9,
+    "n_p2_seen": 81,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "steel"
+    ]
+  },
+  "mankey": {
+    "base_atk": 80.0,
+    "base_def": 35.0,
+    "base_hp": 40.0,
+    "base_spa": 35.0,
+    "base_spd": 45.0,
+    "base_spe": 70.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 1,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "mantine": {
+    "base_atk": 40.0,
+    "base_def": 70.0,
+    "base_hp": 65.0,
+    "base_spa": 80.0,
+    "base_spd": 140.0,
+    "base_spe": 70.0,
+    "n_p1_team": 16,
+    "n_p2_lead": 0,
+    "n_p2_seen": 16,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "water"
+    ]
+  },
+  "mareep": {
+    "base_atk": 40.0,
+    "base_def": 40.0,
+    "base_hp": 55.0,
+    "base_spa": 65.0,
+    "base_spd": 45.0,
+    "base_spe": 35.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 2,
+    "n_p2_seen": 2,
+    "top_item": "berry",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "marill": {
+    "base_atk": 20.0,
+    "base_def": 50.0,
+    "base_hp": 70.0,
+    "base_spa": 20.0,
+    "base_spd": 50.0,
+    "base_spe": 40.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 5,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "marowak": {
+    "base_atk": 80.0,
+    "base_def": 110.0,
+    "base_hp": 60.0,
+    "base_spa": 50.0,
+    "base_spd": 80.0,
+    "base_spe": 45.0,
+    "n_p1_team": 1588,
+    "n_p2_lead": 51,
+    "n_p2_seen": 1314,
+    "top_item": "thickclub",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "meganium": {
+    "base_atk": 82.0,
+    "base_def": 100.0,
+    "base_hp": 80.0,
+    "base_spa": 83.0,
+    "base_spd": 100.0,
+    "base_spe": 80.0,
+    "n_p1_team": 333,
+    "n_p2_lead": 34,
+    "n_p2_seen": 299,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "meowth": {
+    "base_atk": 45.0,
+    "base_def": 35.0,
+    "base_hp": 40.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 90.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 1,
+    "n_p2_seen": 2,
+    "top_item": "goldberry",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "metapod": {
+    "base_atk": 20.0,
+    "base_def": 55.0,
+    "base_hp": 50.0,
+    "base_spa": 25.0,
+    "base_spd": 25.0,
+    "base_spe": 30.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "notype"
+    ]
+  },
+  "mewtwo": {
+    "base_atk": 110.0,
+    "base_def": 90.0,
+    "base_hp": 106.0,
+    "base_spa": 154.0,
+    "base_spd": 90.0,
+    "base_spe": 130.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "miltank": {
+    "base_atk": 80.0,
+    "base_def": 105.0,
+    "base_hp": 95.0,
+    "base_spa": 40.0,
+    "base_spd": 70.0,
+    "base_spe": 100.0,
+    "n_p1_team": 1258,
+    "n_p2_lead": 29,
+    "n_p2_seen": 1166,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "misdreavus": {
+    "base_atk": 60.0,
+    "base_def": 60.0,
+    "base_hp": 60.0,
+    "base_spa": 85.0,
+    "base_spd": 85.0,
+    "base_spe": 85.0,
+    "n_p1_team": 1175,
+    "n_p2_lead": 39,
+    "n_p2_seen": 1038,
+    "top_item": "leftovers",
+    "types": [
+      "ghost",
+      "notype"
+    ]
+  },
+  "moltres": {
+    "base_atk": 100.0,
+    "base_def": 90.0,
+    "base_hp": 90.0,
+    "base_spa": 125.0,
+    "base_spd": 85.0,
+    "base_spe": 90.0,
+    "n_p1_team": 267,
+    "n_p2_lead": 15,
+    "n_p2_seen": 224,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "flying"
+    ]
+  },
+  "mrmime": {
+    "base_atk": 45.0,
+    "base_def": 65.0,
+    "base_hp": 40.0,
+    "base_spa": 100.0,
+    "base_spd": 120.0,
+    "base_spe": 90.0,
+    "n_p1_team": 108,
+    "n_p2_lead": 37,
+    "n_p2_seen": 90,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "muk": {
+    "base_atk": 105.0,
+    "base_def": 75.0,
+    "base_hp": 105.0,
+    "base_spa": 65.0,
+    "base_spd": 100.0,
+    "base_spe": 50.0,
+    "n_p1_team": 166,
+    "n_p2_lead": 8,
+    "n_p2_seen": 128,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "murkrow": {
+    "base_atk": 85.0,
+    "base_def": 42.0,
+    "base_hp": 60.0,
+    "base_spa": 85.0,
+    "base_spd": 42.0,
+    "base_spe": 91.0,
+    "n_p1_team": 29,
+    "n_p2_lead": 2,
+    "n_p2_seen": 19,
+    "top_item": "leftovers",
+    "types": [
+      "dark",
+      "flying"
+    ]
+  },
+  "natu": {
+    "base_atk": 50.0,
+    "base_def": 45.0,
+    "base_hp": 40.0,
+    "base_spa": 70.0,
+    "base_spd": 45.0,
+    "base_spe": 70.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "berryjuice",
+    "types": [
+      "flying",
+      "psychic"
+    ]
+  },
+  "nidoking": {
+    "base_atk": 92.0,
+    "base_def": 77.0,
+    "base_hp": 81.0,
+    "base_spa": 85.0,
+    "base_spd": 75.0,
+    "base_spe": 85.0,
+    "n_p1_team": 2300,
+    "n_p2_lead": 1032,
+    "n_p2_seen": 2146,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "poison"
+    ]
+  },
+  "nidoqueen": {
+    "base_atk": 82.0,
+    "base_def": 87.0,
+    "base_hp": 90.0,
+    "base_spa": 75.0,
+    "base_spd": 85.0,
+    "base_spe": 76.0,
+    "n_p1_team": 130,
+    "n_p2_lead": 42,
+    "n_p2_seen": 142,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "poison"
+    ]
+  },
+  "nidoranf": {
+    "base_atk": 47.0,
+    "base_def": 52.0,
+    "base_hp": 55.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 41.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "nidoranm": {
+    "base_atk": 57.0,
+    "base_def": 40.0,
+    "base_hp": 46.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 50.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 1,
+    "n_p2_seen": 2,
+    "top_item": "berryjuice",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "nidorina": {
+    "base_atk": 70.74493927125506,
+    "base_def": 68.72064777327935,
+    "base_hp": 66.71255060728745,
+    "base_spa": 66.77327935222672,
+    "base_spd": 68.37651821862349,
+    "base_spe": 66.2914979757085,
+    "n_p1_team": 0,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "stats_imputed": true,
+    "types": [
+      "notype",
+      "notype"
+    ]
+  },
+  "nidorino": {
+    "base_atk": 72.0,
+    "base_def": 57.0,
+    "base_hp": 61.0,
+    "base_spa": 55.0,
+    "base_spd": 55.0,
+    "base_spe": 65.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 4,
+    "n_p2_seen": 6,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "ninetales": {
+    "base_atk": 76.0,
+    "base_def": 75.0,
+    "base_hp": 73.0,
+    "base_spa": 81.0,
+    "base_spd": 100.0,
+    "base_spe": 100.0,
+    "n_p1_team": 25,
+    "n_p2_lead": 7,
+    "n_p2_seen": 32,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "noctowl": {
+    "base_atk": 50.0,
+    "base_def": 50.0,
+    "base_hp": 100.0,
+    "base_spa": 76.0,
+    "base_spd": 96.0,
+    "base_spe": 70.0,
+    "n_p1_team": 23,
+    "n_p2_lead": 3,
+    "n_p2_seen": 18,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "octillery": {
+    "base_atk": 105.0,
+    "base_def": 75.0,
+    "base_hp": 75.0,
+    "base_spa": 105.0,
+    "base_spd": 75.0,
+    "base_spe": 45.0,
+    "n_p1_team": 37,
+    "n_p2_lead": 1,
+    "n_p2_seen": 25,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "oddish": {
+    "base_atk": 50.0,
+    "base_def": 55.0,
+    "base_hp": 45.0,
+    "base_spa": 75.0,
+    "base_spd": 65.0,
+    "base_spe": 30.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "berryjuice",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "omanyte": {
+    "base_atk": 40.0,
+    "base_def": 100.0,
+    "base_hp": 35.0,
+    "base_spa": 90.0,
+    "base_spd": 55.0,
+    "base_spe": 35.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 1,
+    "n_p2_seen": 4,
+    "top_item": "berryjuice",
+    "types": [
+      "rock",
+      "water"
+    ]
+  },
+  "omastar": {
+    "base_atk": 60.0,
+    "base_def": 125.0,
+    "base_hp": 70.0,
+    "base_spa": 115.0,
+    "base_spd": 70.0,
+    "base_spe": 55.0,
+    "n_p1_team": 52,
+    "n_p2_lead": 1,
+    "n_p2_seen": 44,
+    "top_item": "leftovers",
+    "types": [
+      "rock",
+      "water"
+    ]
+  },
+  "onix": {
+    "base_atk": 45.0,
+    "base_def": 160.0,
+    "base_hp": 35.0,
+    "base_spa": 30.0,
+    "base_spd": 45.0,
+    "base_spe": 70.0,
+    "n_p1_team": 26,
+    "n_p2_lead": 2,
+    "n_p2_seen": 22,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "paras": {
+    "base_atk": 70.0,
+    "base_def": 55.0,
+    "base_hp": 35.0,
+    "base_spa": 45.0,
+    "base_spd": 55.0,
+    "base_spe": 25.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 1,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "grass"
+    ]
+  },
+  "parasect": {
+    "base_atk": 95.0,
+    "base_def": 80.0,
+    "base_hp": 60.0,
+    "base_spa": 60.0,
+    "base_spd": 80.0,
+    "base_spe": 30.0,
+    "n_p1_team": 18,
+    "n_p2_lead": 7,
+    "n_p2_seen": 21,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "grass"
+    ]
+  },
+  "persian": {
+    "base_atk": 70.0,
+    "base_def": 60.0,
+    "base_hp": 65.0,
+    "base_spa": 65.0,
+    "base_spd": 65.0,
+    "base_spe": 115.0,
+    "n_p1_team": 25,
+    "n_p2_lead": 4,
+    "n_p2_seen": 17,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "phanpy": {
+    "base_atk": 60.0,
+    "base_def": 60.0,
+    "base_hp": 90.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 40.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 0,
+    "n_p2_seen": 5,
+    "top_item": "focusband",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "pichu": {
+    "base_atk": 40.0,
+    "base_def": 15.0,
+    "base_hp": 20.0,
+    "base_spa": 35.0,
+    "base_spd": 35.0,
+    "base_spe": 60.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 2,
+    "n_p2_seen": 7,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "pidgeot": {
+    "base_atk": 80.0,
+    "base_def": 75.0,
+    "base_hp": 83.0,
+    "base_spa": 70.0,
+    "base_spd": 70.0,
+    "base_spe": 91.0,
+    "n_p1_team": 49,
+    "n_p2_lead": 14,
+    "n_p2_seen": 35,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "pidgeotto": {
+    "base_atk": 60.0,
+    "base_def": 55.0,
+    "base_hp": 63.0,
+    "base_spa": 50.0,
+    "base_spd": 50.0,
+    "base_spe": 71.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "pidgey": {
+    "base_atk": 45.0,
+    "base_def": 40.0,
+    "base_hp": 40.0,
+    "base_spa": 35.0,
+    "base_spd": 35.0,
+    "base_spe": 56.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 8,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "pikachu": {
+    "base_atk": 55.0,
+    "base_def": 30.0,
+    "base_hp": 35.0,
+    "base_spa": 50.0,
+    "base_spd": 40.0,
+    "base_spe": 90.0,
+    "n_p1_team": 195,
+    "n_p2_lead": 47,
+    "n_p2_seen": 164,
+    "top_item": "lightball",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "piloswine": {
+    "base_atk": 100.0,
+    "base_def": 80.0,
+    "base_hp": 100.0,
+    "base_spa": 60.0,
+    "base_spd": 60.0,
+    "base_spe": 50.0,
+    "n_p1_team": 200,
+    "n_p2_lead": 6,
+    "n_p2_seen": 172,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "ice"
+    ]
+  },
+  "pineco": {
+    "base_atk": 65.0,
+    "base_def": 90.0,
+    "base_hp": 50.0,
+    "base_spa": 35.0,
+    "base_spd": 35.0,
+    "base_spe": 15.0,
+    "n_p1_team": 49,
+    "n_p2_lead": 32,
+    "n_p2_seen": 41,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "notype"
+    ]
+  },
+  "pinsir": {
+    "base_atk": 125.0,
+    "base_def": 100.0,
+    "base_hp": 65.0,
+    "base_spa": 55.0,
+    "base_spd": 70.0,
+    "base_spe": 85.0,
+    "n_p1_team": 36,
+    "n_p2_lead": 2,
+    "n_p2_seen": 32,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "notype"
+    ]
+  },
+  "politoed": {
+    "base_atk": 75.0,
+    "base_def": 75.0,
+    "base_hp": 90.0,
+    "base_spa": 90.0,
+    "base_spd": 100.0,
+    "base_spe": 70.0,
+    "n_p1_team": 67,
+    "n_p2_lead": 7,
+    "n_p2_seen": 71,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "poliwag": {
+    "base_atk": 50.0,
+    "base_def": 40.0,
+    "base_hp": 40.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 90.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 4,
+    "n_p2_seen": 12,
+    "top_item": "berry",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "poliwhirl": {
+    "base_atk": 65.0,
+    "base_def": 65.0,
+    "base_hp": 65.0,
+    "base_spa": 50.0,
+    "base_spd": 50.0,
+    "base_spe": 90.0,
+    "n_p1_team": 35,
+    "n_p2_lead": 1,
+    "n_p2_seen": 25,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "poliwrath": {
+    "base_atk": 85.0,
+    "base_def": 95.0,
+    "base_hp": 90.0,
+    "base_spa": 70.0,
+    "base_spd": 90.0,
+    "base_spe": 70.0,
+    "n_p1_team": 88,
+    "n_p2_lead": 7,
+    "n_p2_seen": 82,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "water"
+    ]
+  },
+  "ponyta": {
+    "base_atk": 85.0,
+    "base_def": 55.0,
+    "base_hp": 50.0,
+    "base_spa": 65.0,
+    "base_spd": 65.0,
+    "base_spe": 90.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 1,
+    "n_p2_seen": 9,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "porygon": {
+    "base_atk": 60.0,
+    "base_def": 70.0,
+    "base_hp": 65.0,
+    "base_spa": 85.0,
+    "base_spd": 75.0,
+    "base_spe": 40.0,
+    "n_p1_team": 19,
+    "n_p2_lead": 3,
+    "n_p2_seen": 18,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "porygon2": {
+    "base_atk": 80.0,
+    "base_def": 90.0,
+    "base_hp": 85.0,
+    "base_spa": 105.0,
+    "base_spd": 95.0,
+    "base_spe": 60.0,
+    "n_p1_team": 306,
+    "n_p2_lead": 43,
+    "n_p2_seen": 220,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "primeape": {
+    "base_atk": 105.0,
+    "base_def": 60.0,
+    "base_hp": 65.0,
+    "base_spa": 60.0,
+    "base_spd": 70.0,
+    "base_spe": 95.0,
+    "n_p1_team": 64,
+    "n_p2_lead": 3,
+    "n_p2_seen": 40,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "psyduck": {
+    "base_atk": 52.0,
+    "base_def": 48.0,
+    "base_hp": 50.0,
+    "base_spa": 65.0,
+    "base_spd": 50.0,
+    "base_spe": 55.0,
+    "n_p1_team": 10,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "pupitar": {
+    "base_atk": 84.0,
+    "base_def": 70.0,
+    "base_hp": 70.0,
+    "base_spa": 65.0,
+    "base_spd": 70.0,
+    "base_spe": 51.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 7,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "quagsire": {
+    "base_atk": 85.0,
+    "base_def": 85.0,
+    "base_hp": 95.0,
+    "base_spa": 65.0,
+    "base_spd": 65.0,
+    "base_spe": 35.0,
+    "n_p1_team": 409,
+    "n_p2_lead": 14,
+    "n_p2_seen": 339,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "water"
+    ]
+  },
+  "quilava": {
+    "base_atk": 64.0,
+    "base_def": 58.0,
+    "base_hp": 58.0,
+    "base_spa": 80.0,
+    "base_spd": 65.0,
+    "base_spe": 80.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 3,
+    "n_p2_seen": 8,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "qwilfish": {
+    "base_atk": 95.0,
+    "base_def": 75.0,
+    "base_hp": 65.0,
+    "base_spa": 55.0,
+    "base_spd": 55.0,
+    "base_spe": 85.0,
+    "n_p1_team": 156,
+    "n_p2_lead": 74,
+    "n_p2_seen": 139,
+    "top_item": "leftovers",
+    "types": [
+      "poison",
+      "water"
+    ]
+  },
+  "raichu": {
+    "base_atk": 90.0,
+    "base_def": 55.0,
+    "base_hp": 60.0,
+    "base_spa": 90.0,
+    "base_spd": 80.0,
+    "base_spe": 100.0,
+    "n_p1_team": 86,
+    "n_p2_lead": 19,
+    "n_p2_seen": 73,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "raikou": {
+    "base_atk": 85.0,
+    "base_def": 75.0,
+    "base_hp": 90.0,
+    "base_spa": 115.0,
+    "base_spd": 100.0,
+    "base_spe": 115.0,
+    "n_p1_team": 4745,
+    "n_p2_lead": 1951,
+    "n_p2_seen": 4468,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "rapidash": {
+    "base_atk": 100.0,
+    "base_def": 70.0,
+    "base_hp": 65.0,
+    "base_spa": 80.0,
+    "base_spd": 80.0,
+    "base_spe": 105.0,
+    "n_p1_team": 37,
+    "n_p2_lead": 10,
+    "n_p2_seen": 29,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "raticate": {
+    "base_atk": 81.0,
+    "base_def": 60.0,
+    "base_hp": 55.0,
+    "base_spa": 50.0,
+    "base_spd": 70.0,
+    "base_spe": 97.0,
+    "n_p1_team": 17,
+    "n_p2_lead": 5,
+    "n_p2_seen": 12,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "rattata": {
+    "base_atk": 56.0,
+    "base_def": 35.0,
+    "base_hp": 30.0,
+    "base_spa": 25.0,
+    "base_spd": 35.0,
+    "base_spe": 72.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 1,
+    "n_p2_seen": 7,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "remoraid": {
+    "base_atk": 70.74493927125506,
+    "base_def": 68.72064777327935,
+    "base_hp": 66.71255060728745,
+    "base_spa": 66.77327935222672,
+    "base_spd": 68.37651821862349,
+    "base_spe": 66.2914979757085,
+    "n_p1_team": 0,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "stats_imputed": true,
+    "types": [
+      "notype",
+      "notype"
+    ]
+  },
+  "rhydon": {
+    "base_atk": 130.0,
+    "base_def": 120.0,
+    "base_hp": 105.0,
+    "base_spa": 45.0,
+    "base_spd": 45.0,
+    "base_spe": 40.0,
+    "n_p1_team": 731,
+    "n_p2_lead": 21,
+    "n_p2_seen": 703,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "rhyhorn": {
+    "base_atk": 85.0,
+    "base_def": 95.0,
+    "base_hp": 80.0,
+    "base_spa": 30.0,
+    "base_spd": 30.0,
+    "base_spe": 25.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "rock"
+    ]
+  },
+  "sandshrew": {
+    "base_atk": 75.0,
+    "base_def": 85.0,
+    "base_hp": 50.0,
+    "base_spa": 20.0,
+    "base_spd": 30.0,
+    "base_spe": 40.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "sandslash": {
+    "base_atk": 100.0,
+    "base_def": 110.0,
+    "base_hp": 75.0,
+    "base_spa": 45.0,
+    "base_spd": 55.0,
+    "base_spe": 65.0,
+    "n_p1_team": 59,
+    "n_p2_lead": 0,
+    "n_p2_seen": 44,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "notype"
+    ]
+  },
+  "scizor": {
+    "base_atk": 130.0,
+    "base_def": 100.0,
+    "base_hp": 70.0,
+    "base_spa": 55.0,
+    "base_spd": 80.0,
+    "base_spe": 65.0,
+    "n_p1_team": 416,
+    "n_p2_lead": 66,
+    "n_p2_seen": 348,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "steel"
+    ]
+  },
+  "scyther": {
+    "base_atk": 110.0,
+    "base_def": 80.0,
+    "base_hp": 70.0,
+    "base_spa": 55.0,
+    "base_spd": 80.0,
+    "base_spe": 105.0,
+    "n_p1_team": 114,
+    "n_p2_lead": 13,
+    "n_p2_seen": 93,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "flying"
+    ]
+  },
+  "seadra": {
+    "base_atk": 65.0,
+    "base_def": 95.0,
+    "base_hp": 55.0,
+    "base_spa": 95.0,
+    "base_spd": 45.0,
+    "base_spe": 85.0,
+    "n_p1_team": 10,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "seaking": {
+    "base_atk": 92.0,
+    "base_def": 65.0,
+    "base_hp": 80.0,
+    "base_spa": 65.0,
+    "base_spd": 80.0,
+    "base_spe": 68.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "seel": {
+    "base_atk": 45.0,
+    "base_def": 55.0,
+    "base_hp": 65.0,
+    "base_spa": 45.0,
+    "base_spd": 70.0,
+    "base_spe": 45.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 0,
+    "n_p2_seen": 0,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "sentret": {
+    "base_atk": 46.0,
+    "base_def": 34.0,
+    "base_hp": 35.0,
+    "base_spa": 35.0,
+    "base_spd": 45.0,
+    "base_spe": 20.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 1,
+    "n_p2_seen": 2,
+    "top_item": "berry",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "shellder": {
+    "base_atk": 65.0,
+    "base_def": 100.0,
+    "base_hp": 30.0,
+    "base_spa": 45.0,
+    "base_spd": 25.0,
+    "base_spe": 40.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 0,
+    "n_p2_seen": 3,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "shuckle": {
+    "base_atk": 10.0,
+    "base_def": 230.0,
+    "base_hp": 20.0,
+    "base_spa": 10.0,
+    "base_spd": 230.0,
+    "base_spe": 5.0,
+    "n_p1_team": 156,
+    "n_p2_lead": 3,
+    "n_p2_seen": 135,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "rock"
+    ]
+  },
+  "skarmory": {
+    "base_atk": 80.0,
+    "base_def": 140.0,
+    "base_hp": 65.0,
+    "base_spa": 40.0,
+    "base_spd": 70.0,
+    "base_spe": 70.0,
+    "n_p1_team": 3736,
+    "n_p2_lead": 62,
+    "n_p2_seen": 3459,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "steel"
+    ]
+  },
+  "skiploom": {
+    "base_atk": 45.0,
+    "base_def": 50.0,
+    "base_hp": 55.0,
+    "base_spa": 45.0,
+    "base_spd": 65.0,
+    "base_spe": 80.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 3,
+    "n_p2_seen": 4,
+    "top_item": "miracleberry",
+    "types": [
+      "flying",
+      "grass"
+    ]
+  },
+  "slowbro": {
+    "base_atk": 75.0,
+    "base_def": 110.0,
+    "base_hp": 95.0,
+    "base_spa": 100.0,
+    "base_spd": 80.0,
+    "base_spe": 30.0,
+    "n_p1_team": 118,
+    "n_p2_lead": 7,
+    "n_p2_seen": 101,
+    "top_item": "leftovers",
+    "types": [
+      "psychic",
+      "water"
+    ]
+  },
+  "slowking": {
+    "base_atk": 75.0,
+    "base_def": 80.0,
+    "base_hp": 95.0,
+    "base_spa": 100.0,
+    "base_spd": 110.0,
+    "base_spe": 30.0,
+    "n_p1_team": 43,
+    "n_p2_lead": 7,
+    "n_p2_seen": 46,
+    "top_item": "leftovers",
+    "types": [
+      "psychic",
+      "water"
+    ]
+  },
+  "slowpoke": {
+    "base_atk": 65.0,
+    "base_def": 65.0,
+    "base_hp": 90.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 15.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 0,
+    "n_p2_seen": 6,
+    "top_item": "berryjuice",
+    "types": [
+      "psychic",
+      "water"
+    ]
+  },
+  "slugma": {
+    "base_atk": 40.0,
+    "base_def": 40.0,
+    "base_hp": 40.0,
+    "base_spa": 70.0,
+    "base_spd": 40.0,
+    "base_spe": 20.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "smeargle": {
+    "base_atk": 20.0,
+    "base_def": 35.0,
+    "base_hp": 55.0,
+    "base_spa": 20.0,
+    "base_spd": 45.0,
+    "base_spe": 75.0,
+    "n_p1_team": 416,
+    "n_p2_lead": 258,
+    "n_p2_seen": 373,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "smoochum": {
+    "base_atk": 30.0,
+    "base_def": 15.0,
+    "base_hp": 45.0,
+    "base_spa": 85.0,
+    "base_spd": 65.0,
+    "base_spe": 65.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "berryjuice",
+    "types": [
+      "ice",
+      "psychic"
+    ]
+  },
+  "sneasel": {
+    "base_atk": 95.0,
+    "base_def": 55.0,
+    "base_hp": 55.0,
+    "base_spa": 35.0,
+    "base_spd": 75.0,
+    "base_spe": 115.0,
+    "n_p1_team": 55,
+    "n_p2_lead": 3,
+    "n_p2_seen": 41,
+    "top_item": "leftovers",
+    "types": [
+      "dark",
+      "ice"
+    ]
+  },
+  "snorlax": {
+    "base_atk": 110.0,
+    "base_def": 65.0,
+    "base_hp": 160.0,
+    "base_spa": 65.0,
+    "base_spd": 110.0,
+    "base_spe": 30.0,
+    "n_p1_team": 12334,
+    "n_p2_lead": 2695,
+    "n_p2_seen": 11288,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "snubbull": {
+    "base_atk": 80.0,
+    "base_def": 50.0,
+    "base_hp": 60.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 30.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 1,
+    "n_p2_seen": 3,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "spearow": {
+    "base_atk": 60.0,
+    "base_def": 30.0,
+    "base_hp": 40.0,
+    "base_spa": 31.0,
+    "base_spd": 31.0,
+    "base_spe": 70.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "berserkgene",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "spinarak": {
+    "base_atk": 60.0,
+    "base_def": 40.0,
+    "base_hp": 40.0,
+    "base_spa": 40.0,
+    "base_spd": 40.0,
+    "base_spe": 30.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "berryjuice",
+    "types": [
+      "bug",
+      "poison"
+    ]
+  },
+  "squirtle": {
+    "base_atk": 48.0,
+    "base_def": 65.0,
+    "base_hp": 44.0,
+    "base_spa": 50.0,
+    "base_spd": 64.0,
+    "base_spe": 43.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "stantler": {
+    "base_atk": 95.0,
+    "base_def": 62.0,
+    "base_hp": 73.0,
+    "base_spa": 85.0,
+    "base_spd": 65.0,
+    "base_spe": 85.0,
+    "n_p1_team": 23,
+    "n_p2_lead": 3,
+    "n_p2_seen": 20,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "starmie": {
+    "base_atk": 75.0,
+    "base_def": 85.0,
+    "base_hp": 60.0,
+    "base_spa": 100.0,
+    "base_spd": 85.0,
+    "base_spe": 115.0,
+    "n_p1_team": 2366,
+    "n_p2_lead": 98,
+    "n_p2_seen": 2131,
+    "top_item": "leftovers",
+    "types": [
+      "psychic",
+      "water"
+    ]
+  },
+  "staryu": {
+    "base_atk": 45.0,
+    "base_def": 55.0,
+    "base_hp": 30.0,
+    "base_spa": 70.0,
+    "base_spd": 55.0,
+    "base_spe": 85.0,
+    "n_p1_team": 10,
+    "n_p2_lead": 1,
+    "n_p2_seen": 8,
+    "top_item": "berryjuice",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "steelix": {
+    "base_atk": 85.0,
+    "base_def": 200.0,
+    "base_hp": 75.0,
+    "base_spa": 55.0,
+    "base_spd": 65.0,
+    "base_spe": 30.0,
+    "n_p1_team": 2925,
+    "n_p2_lead": 44,
+    "n_p2_seen": 2651,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "steel"
+    ]
+  },
+  "sudowoodo": {
+    "base_atk": 100.0,
+    "base_def": 115.0,
+    "base_hp": 70.0,
+    "base_spa": 30.0,
+    "base_spd": 65.0,
+    "base_spe": 30.0,
+    "n_p1_team": 41,
+    "n_p2_lead": 6,
+    "n_p2_seen": 34,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "rock"
+    ]
+  },
+  "suicune": {
+    "base_atk": 75.0,
+    "base_def": 115.0,
+    "base_hp": 100.0,
+    "base_spa": 90.0,
+    "base_spd": 115.0,
+    "base_spe": 85.0,
+    "n_p1_team": 1157,
+    "n_p2_lead": 50,
+    "n_p2_seen": 1041,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "sunflora": {
+    "base_atk": 75.0,
+    "base_def": 55.0,
+    "base_hp": 75.0,
+    "base_spa": 105.0,
+    "base_spd": 85.0,
+    "base_spe": 30.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 0,
+    "n_p2_seen": 14,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "sunkern": {
+    "base_atk": 30.0,
+    "base_def": 30.0,
+    "base_hp": 30.0,
+    "base_spa": 30.0,
+    "base_spd": 30.0,
+    "base_spe": 30.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "swinub": {
+    "base_atk": 50.0,
+    "base_def": 40.0,
+    "base_hp": 50.0,
+    "base_spa": 30.0,
+    "base_spd": 30.0,
+    "base_spe": 50.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 1,
+    "n_p2_seen": 7,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "ice"
+    ]
+  },
+  "tangela": {
+    "base_atk": 55.0,
+    "base_def": 115.0,
+    "base_hp": 65.0,
+    "base_spa": 100.0,
+    "base_spd": 40.0,
+    "base_spe": 60.0,
+    "n_p1_team": 14,
+    "n_p2_lead": 1,
+    "n_p2_seen": 12,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "notype"
+    ]
+  },
+  "tauros": {
+    "base_atk": 100.0,
+    "base_def": 95.0,
+    "base_hp": 75.0,
+    "base_spa": 40.0,
+    "base_spd": 70.0,
+    "base_spe": 110.0,
+    "n_p1_team": 159,
+    "n_p2_lead": 19,
+    "n_p2_seen": 93,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "teddiursa": {
+    "base_atk": 80.0,
+    "base_def": 50.0,
+    "base_hp": 60.0,
+    "base_spa": 50.0,
+    "base_spd": 50.0,
+    "base_spe": 40.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 2,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "tentacool": {
+    "base_atk": 40.0,
+    "base_def": 35.0,
+    "base_hp": 40.0,
+    "base_spa": 50.0,
+    "base_spd": 100.0,
+    "base_spe": 70.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "berryjuice",
+    "types": [
+      "poison",
+      "water"
+    ]
+  },
+  "tentacruel": {
+    "base_atk": 70.0,
+    "base_def": 65.0,
+    "base_hp": 80.0,
+    "base_spa": 80.0,
+    "base_spd": 120.0,
+    "base_spe": 100.0,
+    "n_p1_team": 429,
+    "n_p2_lead": 8,
+    "n_p2_seen": 333,
+    "top_item": "leftovers",
+    "types": [
+      "poison",
+      "water"
+    ]
+  },
+  "togepi": {
+    "base_atk": 20.0,
+    "base_def": 65.0,
+    "base_hp": 35.0,
+    "base_spa": 40.0,
+    "base_spd": 65.0,
+    "base_spe": 20.0,
+    "n_p1_team": 7,
+    "n_p2_lead": 1,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "togetic": {
+    "base_atk": 40.0,
+    "base_def": 85.0,
+    "base_hp": 55.0,
+    "base_spa": 80.0,
+    "base_spd": 105.0,
+    "base_spe": 40.0,
+    "n_p1_team": 16,
+    "n_p2_lead": 2,
+    "n_p2_seen": 18,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "normal"
+    ]
+  },
+  "totodile": {
+    "base_atk": 65.0,
+    "base_def": 64.0,
+    "base_hp": 50.0,
+    "base_spa": 44.0,
+    "base_spd": 48.0,
+    "base_spe": 43.0,
+    "n_p1_team": 11,
+    "n_p2_lead": 1,
+    "n_p2_seen": 8,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "typhlosion": {
+    "base_atk": 84.0,
+    "base_def": 78.0,
+    "base_hp": 78.0,
+    "base_spa": 109.0,
+    "base_spd": 85.0,
+    "base_spe": 100.0,
+    "n_p1_team": 241,
+    "n_p2_lead": 80,
+    "n_p2_seen": 269,
+    "top_item": "leftovers",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "tyranitar": {
+    "base_atk": 134.0,
+    "base_def": 110.0,
+    "base_hp": 100.0,
+    "base_spa": 95.0,
+    "base_spd": 100.0,
+    "base_spe": 61.0,
+    "n_p1_team": 4029,
+    "n_p2_lead": 241,
+    "n_p2_seen": 3590,
+    "top_item": "leftovers",
+    "types": [
+      "dark",
+      "rock"
+    ]
+  },
+  "tyrogue": {
+    "base_atk": 35.0,
+    "base_def": 35.0,
+    "base_hp": 35.0,
+    "base_spa": 35.0,
+    "base_spd": 35.0,
+    "base_spe": 35.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "leftovers",
+    "types": [
+      "fighting",
+      "notype"
+    ]
+  },
+  "umbreon": {
+    "base_atk": 65.0,
+    "base_def": 110.0,
+    "base_hp": 95.0,
+    "base_spa": 60.0,
+    "base_spd": 130.0,
+    "base_spe": 65.0,
+    "n_p1_team": 1547,
+    "n_p2_lead": 237,
+    "n_p2_seen": 1430,
+    "top_item": "leftovers",
+    "types": [
+      "dark",
+      "notype"
+    ]
+  },
+  "unown": {
+    "base_atk": 72.0,
+    "base_def": 48.0,
+    "base_hp": 48.0,
+    "base_spa": 72.0,
+    "base_spd": 48.0,
+    "base_spe": 48.0,
+    "n_p1_team": 1,
+    "n_p2_lead": 0,
+    "n_p2_seen": 5,
+    "top_item": "berry",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "ursaring": {
+    "base_atk": 130.0,
+    "base_def": 75.0,
+    "base_hp": 90.0,
+    "base_spa": 75.0,
+    "base_spd": 75.0,
+    "base_spe": 55.0,
+    "n_p1_team": 85,
+    "n_p2_lead": 6,
+    "n_p2_seen": 64,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "vaporeon": {
+    "base_atk": 65.0,
+    "base_def": 60.0,
+    "base_hp": 130.0,
+    "base_spa": 110.0,
+    "base_spd": 95.0,
+    "base_spe": 65.0,
+    "n_p1_team": 1542,
+    "n_p2_lead": 14,
+    "n_p2_seen": 1094,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "venomoth": {
+    "base_atk": 65.0,
+    "base_def": 60.0,
+    "base_hp": 70.0,
+    "base_spa": 90.0,
+    "base_spd": 75.0,
+    "base_spe": 90.0,
+    "n_p1_team": 40,
+    "n_p2_lead": 15,
+    "n_p2_seen": 28,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "poison"
+    ]
+  },
+  "venonat": {
+    "base_atk": 55.0,
+    "base_def": 50.0,
+    "base_hp": 60.0,
+    "base_spa": 40.0,
+    "base_spd": 55.0,
+    "base_spe": 45.0,
+    "n_p1_team": 2,
+    "n_p2_lead": 1,
+    "n_p2_seen": 5,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "poison"
+    ]
+  },
+  "venusaur": {
+    "base_atk": 82.0,
+    "base_def": 83.0,
+    "base_hp": 80.0,
+    "base_spa": 100.0,
+    "base_spd": 100.0,
+    "base_spe": 80.0,
+    "n_p1_team": 304,
+    "n_p2_lead": 47,
+    "n_p2_seen": 252,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "victreebel": {
+    "base_atk": 105.0,
+    "base_def": 65.0,
+    "base_hp": 80.0,
+    "base_spa": 100.0,
+    "base_spd": 60.0,
+    "base_spe": 70.0,
+    "n_p1_team": 98,
+    "n_p2_lead": 11,
+    "n_p2_seen": 90,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "vileplume": {
+    "base_atk": 80.0,
+    "base_def": 85.0,
+    "base_hp": 75.0,
+    "base_spa": 100.0,
+    "base_spd": 90.0,
+    "base_spe": 50.0,
+    "n_p1_team": 47,
+    "n_p2_lead": 3,
+    "n_p2_seen": 36,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "voltorb": {
+    "base_atk": 30.0,
+    "base_def": 50.0,
+    "base_hp": 40.0,
+    "base_spa": 55.0,
+    "base_spd": 55.0,
+    "base_spe": 100.0,
+    "n_p1_team": 9,
+    "n_p2_lead": 6,
+    "n_p2_seen": 14,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "notype"
+    ]
+  },
+  "vulpix": {
+    "base_atk": 41.0,
+    "base_def": 40.0,
+    "base_hp": 38.0,
+    "base_spa": 50.0,
+    "base_spd": 65.0,
+    "base_spe": 65.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "berryjuice",
+    "types": [
+      "fire",
+      "notype"
+    ]
+  },
+  "wartortle": {
+    "base_atk": 63.0,
+    "base_def": 80.0,
+    "base_hp": 59.0,
+    "base_spa": 65.0,
+    "base_spd": 80.0,
+    "base_spe": 58.0,
+    "n_p1_team": 6,
+    "n_p2_lead": 0,
+    "n_p2_seen": 9,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "water"
+    ]
+  },
+  "weedle": {
+    "base_atk": 70.74493927125506,
+    "base_def": 68.72064777327935,
+    "base_hp": 66.71255060728745,
+    "base_spa": 66.77327935222672,
+    "base_spd": 68.37651821862349,
+    "base_spe": 66.2914979757085,
+    "n_p1_team": 0,
+    "n_p2_lead": 0,
+    "n_p2_seen": 1,
+    "stats_imputed": true,
+    "types": [
+      "notype",
+      "notype"
+    ]
+  },
+  "weepinbell": {
+    "base_atk": 90.0,
+    "base_def": 50.0,
+    "base_hp": 65.0,
+    "base_spa": 85.0,
+    "base_spd": 45.0,
+    "base_spe": 55.0,
+    "n_p1_team": 8,
+    "n_p2_lead": 8,
+    "n_p2_seen": 11,
+    "top_item": "leftovers",
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "weezing": {
+    "base_atk": 90.0,
+    "base_def": 120.0,
+    "base_hp": 65.0,
+    "base_spa": 85.0,
+    "base_spd": 70.0,
+    "base_spe": 60.0,
+    "n_p1_team": 62,
+    "n_p2_lead": 2,
+    "n_p2_seen": 46,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "poison"
+    ]
+  },
+  "wigglytuff": {
+    "base_atk": 70.0,
+    "base_def": 45.0,
+    "base_hp": 140.0,
+    "base_spa": 75.0,
+    "base_spd": 50.0,
+    "base_spe": 45.0,
+    "n_p1_team": 17,
+    "n_p2_lead": 4,
+    "n_p2_seen": 9,
+    "top_item": "leftovers",
+    "types": [
+      "normal",
+      "notype"
+    ]
+  },
+  "wobbuffet": {
+    "base_atk": 33.0,
+    "base_def": 58.0,
+    "base_hp": 190.0,
+    "base_spa": 33.0,
+    "base_spd": 58.0,
+    "base_spe": 33.0,
+    "n_p1_team": 24,
+    "n_p2_lead": 4,
+    "n_p2_seen": 22,
+    "top_item": "leftovers",
+    "types": [
+      "notype",
+      "psychic"
+    ]
+  },
+  "wooper": {
+    "base_atk": 45.0,
+    "base_def": 45.0,
+    "base_hp": 55.0,
+    "base_spa": 25.0,
+    "base_spd": 25.0,
+    "base_spe": 15.0,
+    "n_p1_team": 4,
+    "n_p2_lead": 1,
+    "n_p2_seen": 1,
+    "top_item": "leftovers",
+    "types": [
+      "ground",
+      "water"
+    ]
+  },
+  "xatu": {
+    "base_atk": 75.0,
+    "base_def": 70.0,
+    "base_hp": 65.0,
+    "base_spa": 95.0,
+    "base_spd": 70.0,
+    "base_spe": 95.0,
+    "n_p1_team": 30,
+    "n_p2_lead": 1,
+    "n_p2_seen": 36,
+    "top_item": "leftovers",
+    "types": [
+      "flying",
+      "psychic"
+    ]
+  },
+  "yanma": {
+    "base_atk": 65.0,
+    "base_def": 45.0,
+    "base_hp": 65.0,
+    "base_spa": 75.0,
+    "base_spd": 45.0,
+    "base_spe": 95.0,
+    "n_p1_team": 5,
+    "n_p2_lead": 0,
+    "n_p2_seen": 4,
+    "top_item": "leftovers",
+    "types": [
+      "bug",
+      "flying"
+    ]
+  },
+  "zapdos": {
+    "base_atk": 90.0,
+    "base_def": 85.0,
+    "base_hp": 90.0,
+    "base_spa": 125.0,
+    "base_spd": 90.0,
+    "base_spe": 100.0,
+    "n_p1_team": 7529,
+    "n_p2_lead": 2391,
+    "n_p2_seen": 7224,
+    "top_item": "leftovers",
+    "types": [
+      "electric",
+      "flying"
+    ]
+  },
+  "zubat": {
+    "base_atk": 45.0,
+    "base_def": 35.0,
+    "base_hp": 40.0,
+    "base_spa": 30.0,
+    "base_spd": 40.0,
+    "base_spe": 55.0,
+    "n_p1_team": 3,
+    "n_p2_lead": 0,
+    "n_p2_seen": 2,
+    "top_item": "pokeball",
+    "types": [
+      "flying",
+      "poison"
+    ]
+  }
+}
