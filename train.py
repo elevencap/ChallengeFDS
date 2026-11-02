@@ -1,81 +1,117 @@
 import numpy as np
 import pandas as pd
-import lightgbm as lgb
 from sklearn.model_selection import StratifiedKFold
+from sklearn.ensemble import RandomForestClassifier
+from catboost import CatBoostClassifier
+# Se vuoi includere anche XGBoost, basta decommentare le righe corrispondenti
+from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 
 from features import build
 
 # =========================================================
-# 1. COSTRUZIONE FEATURE DI TRAIN (train.jsonl) CON features.build
+# 1. COSTRUZIONE E PREPARAZIONE FEATURE (train & test)
 # =========================================================
-print("Estrazione feature da 'train.jsonl' in corso...")
+print("Estrazione feature da 'train.jsonl' e 'test.jsonl'...")
 train_df = build("train.jsonl")
-train_df.to_csv("features_train.csv", index=False)  # solo per ispezione, non viene riletto
+test_df = build("test.jsonl")
 
 target_col = "target" if "target" in train_df.columns else "player_won"
 X_train = train_df.drop(columns=["battle_id", target_col], errors="ignore")
 y_train = train_df[target_col].astype(int)
 
-# Con features.py tutte le colonne sono numeriche: cat_cols resta vuoto,
-# ma lo mantengo così il resto del codice non cambia.
+# Allineamento colonne sul test set
+X_test = test_df.reindex(columns=X_train.columns, fill_value=0)
+
 cat_cols = [c for c in X_train.columns
             if c.endswith("_name") or c.endswith("_item") or c.endswith("status_last")]
 
+# Preprocessing categoriche specifico per modello:
+# - CatBoost vuole stringhe (o la lista delle feature categoriche)
+# - Random Forest (e XGBoost) richiedono codifica numerica (cat.codes)
+
+X_tr_cb, X_te_cb = X_train.copy(), X_test.copy()
 for col in cat_cols:
-    X_train[col] = X_train[col].astype("category")
+    X_tr_cb[col] = X_tr_cb[col].astype(str)
+    X_te_cb[col] = X_te_cb[col].astype(str)
 
-print(f"Dataset di addestramento pronto: {X_train.shape[0]} battaglie, {X_train.shape[1]} feature.")
-
-# =========================================================
-# 2. COSTRUZIONE FEATURE DI TEST (test.jsonl) CON LA STESSA FUNZIONE
-# =========================================================
-print("Estrazione feature da 'test.jsonl' in corso...")
-test_df = build("test.jsonl")
-test_df.to_csv("features_test.csv", index=False)  # solo per ispezione, non viene riletto
-
-# Allineamento colonne e categoriche tra Train e Test
-X_test = test_df.reindex(columns=X_train.columns, fill_value=0)
-
+X_tr_enc, X_te_enc = X_train.copy(), X_test.copy()
 for col in cat_cols:
-    X_test[col] = X_test[col].astype("category")
+    X_tr_enc[col] = X_tr_enc[col].astype("category").cat.codes
+    X_te_enc[col] = X_te_enc[col].astype("category").cat.codes
 
-print(f"Dataset di test pronto: {X_test.shape[0]} battaglie.")
+print(f"Dataset pronto: {X_train.shape[0]} battaglie di train, {X_test.shape[0]} di test.")
 
 # =========================================================
-# 3. VALUTAZIONE ACCURATEZZA IN CROSS-VALIDATION
+# 2. DEFINIZIONE DEI MODELLI
 # =========================================================
-print("\n--- VALUTAZIONE IN CROSS-VALIDATION (5-FOLD) ---")
+def get_models():
+    return {
+        "RandomForest": RandomForestClassifier(
+            n_estimators=500, max_depth=15, random_state=42, n_jobs=-1
+        ),
+        "CatBoost": CatBoostClassifier(
+            iterations=500, learning_rate=0.05, depth=6,
+            cat_features=cat_cols, random_state=42, verbose=0
+        ),
+        # XGBoost facoltativo se vuoi fare un ensemble a 3:
+        "XGBoost": XGBClassifier(
+            n_estimators=500, learning_rate=0.05, max_depth=6,
+            random_state=42, eval_metric="logloss", n_jobs=-1
+        )
+    }
+
+# =========================================================
+# 3. VALUTAZIONE IN CROSS-VALIDATION (5-FOLD) PER L'ENSEMBLE
+# =========================================================
+print("\n--- VALUTAZIONE ENSEMBLE IN CROSS-VALIDATION (5-FOLD) ---")
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 cv_scores = []
 
 for fold, (train_idx, val_idx) in enumerate(skf.split(X_train, y_train), 1):
-    X_tr, y_tr = X_train.iloc[train_idx], y_train.iloc[train_idx]
-    X_va, y_va = X_train.iloc[val_idx], y_train.iloc[val_idx]
+    y_tr, y_va = y_train.iloc[train_idx], y_train.iloc[val_idx]
     
-    fold_model = lgb.LGBMClassifier(n_estimators=500, learning_rate=0.05, random_state=42, verbose=-1)
-    fold_model.fit(X_tr, y_tr)
+    # 1. Random Forest (dati codificati)
+    rf = RandomForestClassifier(n_estimators=500, max_depth=15, random_state=42, n_jobs=-1)
+    rf.fit(X_tr_enc.iloc[train_idx], y_tr)
+    p_rf_val = rf.predict_proba(X_tr_enc.iloc[val_idx])[:, 1]
+
+    # 2. CatBoost (dati in stringa)
+    cb = CatBoostClassifier(iterations=500, learning_rate=0.05, depth=6, cat_features=cat_cols, random_state=42, verbose=0)
+    cb.fit(X_tr_cb.iloc[train_idx], y_tr)
+    p_cb_val = cb.predict_proba(X_tr_cb.iloc[val_idx])[:, 1]
     
-    score = fold_model.score(X_va, y_va)
+    # Media delle probabilità (Soft Voting)
+    p_ens_val = (p_rf_val + p_cb_val) / 2.0
+    preds_val = (p_ens_val >= 0.5).astype(int)
+    
+    score = accuracy_score(y_va, preds_val)
     cv_scores.append(score)
-    print(f"Fold {fold}: Accuratezza = {score * 100:.2f}%")
+    print(f"Fold {fold}: Accuratezza Ensemble = {score * 100:.2f}%")
 
-print(f"Accuratezza Media CV: {np.mean(cv_scores)*100:.2f}% (± {np.std(cv_scores)*100:.2f}%)")
+print(f"Accuratezza Media CV Ensemble: {np.mean(cv_scores)*100:.2f}% (± {np.std(cv_scores)*100:.2f}%)")
 
 # =========================================================
-# 4. ADDESTRAMENTO FINALE E AGGIORNAMENTO DI SUBMISSION.CSV
+# 4. ADDESTRAMENTO FINALE E PREDIZIONE SUBMISSION
 # =========================================================
-print("\nAddestramento finale di LightGBM sulle 10.000 battaglie...")
-model = lgb.LGBMClassifier(n_estimators=500, learning_rate=0.05, random_state=42, verbose=-1)
-model.fit(X_train, y_train)
+print("\nAddestramento finale sui dati completi...")
 
-print("Generazione delle nuove predizioni per il test set...")
-predictions = model.predict(X_test)
+rf_final = RandomForestClassifier(n_estimators=500, max_depth=15, random_state=42, n_jobs=-1)
+rf_final.fit(X_tr_enc, y_train)
+p_rf_test = rf_final.predict_proba(X_te_enc)[:, 1]
+
+cb_final = CatBoostClassifier(iterations=500, learning_rate=0.05, depth=6, cat_features=cat_cols, random_state=42, verbose=0)
+cb_final.fit(X_tr_cb, y_train)
+p_cb_test = cb_final.predict_proba(X_te_cb)[:, 1]
+
+# Soft Voting finale
+p_test_avg = (p_rf_test + p_cb_test) / 2.0
+final_predictions = (p_test_avg >= 0.5).astype(int)
 
 submission = pd.DataFrame({
     "battle_id": test_df["battle_id"],
-    "player_won": predictions
+    "player_won": final_predictions
 })
 
 submission.to_csv("submission.csv", index=False)
-print("\n[OK] 'submission.csv' aggiornato con successo con 5.000 predizioni!")
+print("\n[OK] 'submission.csv' generato con successo unendo Random Forest e CatBoost!")
