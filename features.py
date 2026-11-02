@@ -1,7 +1,7 @@
 import json
 import numpy as np
 import pandas as pd
-from type_chart import Type, effectiveness
+from type_chart import Type, TYPES, effectiveness
 
 STATS = ["base_hp", "base_atk", "base_def", "base_spa", "base_spd", "base_spe"]
 BOOSTS = ("atk", "def", "spa", "spd", "spe")
@@ -39,6 +39,11 @@ def move_eff(move, defender_name):
     except (KeyError, ValueError):
         return None
 
+def has_quad_weakness(m, attacker_types=TYPES):
+    """True se almeno un tipo in attacker_types colpisce m con efficacia >= 4."""
+    types = real_types(m["types"])
+    return any(effectiveness(a, *types) >= 4 for a in attacker_types)
+
 
 # ---------- item: solo leftovers ----------
 def item_features(team):
@@ -68,6 +73,8 @@ def static_features(b):
         "n_faster_than_lead": sum(m["base_spe"] > lead["base_spe"] for m in team),
         "phys_bulk_diff": np.mean([phys_bulk(m) for m in team]) - phys_bulk(lead),
         "spec_bulk_diff": np.mean([spec_bulk(m) for m in team]) - spec_bulk(lead),
+        "n_quad_weak": sum(has_quad_weakness(m) for m in team),
+        "n_quad_weak_to_lead": sum(has_quad_weakness(m, lead_types) for m in team),
         "team_off_vs_lead": np.mean(off),    # quanto il mio team colpisce il lead avversario
         "lead_off_vs_team": np.mean(dfn),    # quanto il lead avversario colpisce il mio team
         "matchup_diff": np.mean(off) - np.mean(dfn),
@@ -119,7 +126,6 @@ def timeline_features(b):
     d = a["hp"] - o["hp"]
 
     return {
-        "n_turns": n,
         "team_hp_diff": a["team_hp"] - o["team_hp"],
         "fainted_diff": o["fainted"] - a["fainted"],            # KO fatti - KO subiti
         "first_ko": (a["first_faint"] if a["first_faint"] is not None else n)
@@ -139,7 +145,6 @@ def timeline_features(b):
 def flatten(b):
     row = {"battle_id": b["battle_id"], **static_features(b), **timeline_features(b)}
     # il recupero passivo pesa di più nelle battaglie lunghe
-    row["leftovers_x_turns"] = row["n_leftovers"] * row["n_turns"]
     if "player_won" in b:
         row["target"] = int(b["player_won"])
     return row
