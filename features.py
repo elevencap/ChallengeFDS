@@ -7,21 +7,20 @@ STATS = ["base_hp", "base_atk", "base_def", "base_spa", "base_spd", "base_spe"]
 BOOSTS = ("atk", "def", "spa", "spd", "spe")
 TEAM_SIZE = 6  # p2: i Pokémon non ancora visti si contano a HP pieni
 
-# ---------- PESI (da tarare con la CV) ----------
-WEIGHTS = {"base_hp": 1.0, "base_atk": 1.0, "base_def": 1.25,
-           "base_spa": 1.0, "base_spd": 1.0, "base_spe": 1.0}
+# ---------- database Pokémon (generato da build_pokemon_db.py) ----------
+with open("pokemon_db.json", encoding="utf-8") as fh:
+    DB = json.load(fh)
 
-with open("pokemon_tipi.json", encoding="utf-8") as fh:
-    TIPI = json.load(fh)  # nome -> tipi (per i Pokémon p2 visti in timeline)
+GLOBAL = DB.pop("_global")                      # stat medie su tutte le specie viste
+TIPI = {k: v["types"] for k, v in DB.items()}   # nome -> tipi (compatibile con move_eff)
+
+
+def stat_name(s):
+    return s.replace("base_", "")
 
 
 def real_types(types):
     return [Type(t) for t in types if t != "notype"]
-
-
-def bst(m):
-    """Somma pesata delle stat base (difesa leggermente più pesante)."""
-    return sum(WEIGHTS[s] * m[s] for s in STATS)
 
 
 def phys_bulk(m):
@@ -39,10 +38,16 @@ def move_eff(move, defender_name):
     except (KeyError, ValueError):
         return None
 
-def has_quad_weakness(m, attacker_types=TYPES):
-    """True se almeno un tipo in attacker_types colpisce m con efficacia >= 4."""
-    types = real_types(m["types"])
+
+def has_quad_weakness(types, attacker_types=TYPES):
+    """True se almeno un tipo in attacker_types colpisce con efficacia >= 4
+    un Pokémon con i tipi `types` (lista di Type, già senza 'notype')."""
     return any(effectiveness(a, *types) >= 4 for a in attacker_types)
+
+
+def best_stab(att_types, def_types):
+    """Miglior efficacia STAB di un attaccante contro un difensore (1.0 se senza tipi)."""
+    return max((effectiveness(t, *def_types) for t in att_types), default=1.0)
 
 
 # ---------- item: solo leftovers ----------
@@ -56,7 +61,7 @@ def item_features(team):
     }
 
 
-# ---------- statiche: già confrontate (p1 - p2) ----------
+# ---------- statiche: p1 (team completo) vs lead p2 ----------
 def static_features(b):
     team, lead = b["p1_team_details"], b["p2_lead_details"]
     lead_types = real_types(lead["types"])
@@ -67,20 +72,78 @@ def static_features(b):
     dfn = [max(effectiveness(t, *real_types(m["types"])) for t in lead_types) for m in team]
 
     f = {
-        "team_bst_vs_lead": np.mean([bst(m) for m in team]) - bst(lead),
-        "lead_bst_diff": bst(p1_lead) - bst(lead),
-        "lead_spe_diff": p1_lead["base_spe"] - lead["base_spe"],
         "n_faster_than_lead": sum(m["base_spe"] > lead["base_spe"] for m in team),
+        "n_slower_than_lead": sum(m["base_spe"] < lead["base_spe"] for m in team),
         "phys_bulk_diff": np.mean([phys_bulk(m) for m in team]) - phys_bulk(lead),
         "spec_bulk_diff": np.mean([spec_bulk(m) for m in team]) - spec_bulk(lead),
-        "n_quad_weak": sum(has_quad_weakness(m) for m in team),
-        "n_quad_weak_to_lead": sum(has_quad_weakness(m, lead_types) for m in team),
+        "n_quad_weak": sum(has_quad_weakness(real_types(m["types"])) for m in team),
+        "n_quad_weak_to_lead": sum(has_quad_weakness(real_types(m["types"]), lead_types)
+                                   for m in team),
         "team_off_vs_lead": np.mean(off),    # quanto il mio team colpisce il lead avversario
         "lead_off_vs_team": np.mean(dfn),    # quanto il lead avversario colpisce il mio team
         "matchup_diff": np.mean(off) - np.mean(dfn),
         "n_super_effective_answers": sum(o >= 2 for o in off),
     }
+
+    # stat spacchettate: una feature per ogni stat base, nessuna somma
+    for s in STATS:
+        n = stat_name(s)
+        vals = [m[s] for m in team]
+        f[f"lead_{n}_diff"] = p1_lead[s] - lead[s]          # mio lead vs lead avversario
+        f[f"team_{n}_mean_diff"] = np.mean(vals) - lead[s]  # media team vs lead avversario
+        f[f"team_{n}_max_diff"] = max(vals) - lead[s]       # miglior Pokémon del team vs lead
+
     f.update(item_features(team))
+    return f
+
+
+# ---------- team p2 rivelato in timeline (stat dal DB) ----------
+def revealed_features(b):
+    team, lead = b["p1_team_details"], b["p2_lead_details"]
+
+    # specie p2 viste, nell'ordine di comparsa (lead incluso)
+    seen = list(dict.fromkeys(
+        [lead["name"]] + [t["p2_pokemon_state"]["name"] for t in b["battle_timeline"]]
+    ))
+    n_seen = len(seen)
+    n_unknown = max(TEAM_SIZE - n_seen, 0)
+    total = n_seen + n_unknown
+
+    p2 = [DB.get(n, GLOBAL) for n in seen]
+    p2_types = [real_types(TIPI.get(n, [])) for n in seen]
+    p1_types = [real_types(m["types"]) for m in team]
+
+    f = {"p2_n_seen": n_seen}
+
+    # stat del team p2 stimato: rivelati + sconosciuti alla media globale
+    for s in STATS:
+        n = stat_name(s)
+        p2_est = (sum(m[s] for m in p2) + n_unknown * GLOBAL[s]) / total
+        f[f"p2team_{n}_diff"] = np.mean([m[s] for m in team]) - p2_est   # p1 - p2
+
+    p2_phys = (sum(phys_bulk(m) for m in p2) + n_unknown * phys_bulk(GLOBAL)) / total
+    p2_spec = (sum(spec_bulk(m) for m in p2) + n_unknown * spec_bulk(GLOBAL)) / total
+    f["p2team_phys_bulk_diff"] = np.mean([phys_bulk(m) for m in team]) - p2_phys
+    f["p2team_spec_bulk_diff"] = np.mean([spec_bulk(m) for m in team]) - p2_spec
+
+    # velocità: quanti dei miei sono più veloci dei p2 visti (media sui visti)
+    p2_spe = np.array([m["base_spe"] for m in p2])
+    f["p1_faster_than_seen_frac"] = np.mean(
+        [[m["base_spe"] > sp for sp in p2_spe] for m in team]
+    )
+
+    # matchup di tipo: team p1 vs team p2 rivelato (media su tutte le coppie)
+    off = np.mean([[best_stab(at, dt) for dt in p2_types] for at in p1_types])
+    dfn = np.mean([[best_stab(at, dt) for dt in p1_types] for at in p2_types])
+    f["seen_off"] = off                 # quanto colpisco i p2 visti
+    f["seen_dfn"] = dfn                 # quanto mi colpiscono i p2 visti
+    f["seen_matchup_diff"] = off - dfn
+
+    # debolezze x4 del team p2 rivelato (frazione sui visti, per non dipendere da n_seen)
+    f["p2_quad_weak_frac"] = np.mean([has_quad_weakness(t) for t in p2_types])
+    f["p1_quad_weak_frac"] = np.mean([has_quad_weakness(t) for t in p1_types])
+    f["quad_weak_frac_diff"] = f["p1_quad_weak_frac"] - f["p2_quad_weak_frac"]
+
     return f
 
 
@@ -143,8 +206,12 @@ def timeline_features(b):
 
 
 def flatten(b):
-    row = {"battle_id": b["battle_id"], **static_features(b), **timeline_features(b)}
-    # il recupero passivo pesa di più nelle battaglie lunghe
+    row = {
+        "battle_id": b["battle_id"],
+        **static_features(b),
+        **revealed_features(b),
+        **timeline_features(b),
+    }
     if "player_won" in b:
         row["target"] = int(b["player_won"])
     return row
