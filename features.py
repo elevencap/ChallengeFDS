@@ -228,7 +228,7 @@ def timeline_features(b):
 
     # Tracciamento dinamico del "Main Tank" (Sostituisce l'hardcoding su Snorlax)
     p1_team = b["p1_team_details"]
-    p1_main_tank = max(p1_team, key=mixed_bulk)["name"]
+    p1_main_tank = max(p1_team, key=mixed_bulk).get("name", "unknown")
     p1_tank_hp = a["last_hp"].get(p1_main_tank, 1.0)
 
     p2_lead = b["p2_lead_details"]
@@ -236,7 +236,7 @@ def timeline_features(b):
     p2_seen_mons = [DB.get(name, GLOBAL) for name in seen_names]
     
     if p2_seen_mons:
-        p2_main_tank = max(p2_seen_mons, key=mixed_bulk)["name"]
+        p2_main_tank = max(p2_seen_mons, key=mixed_bulk).get("name", "unknown")
         # Se non è in last_hp, significa che non è mai sceso in campo dopo il lead,
         # assumiamo che sia al 100% (1.0) se lo abbiamo visto come lead.
         p2_tank_hp = o["last_hp"].get(p2_main_tank, 1.0)
