@@ -25,6 +25,10 @@ def phys_bulk(m):
 def spec_bulk(m):
     return m["base_hp"] * m["base_spd"]
 
+def mixed_bulk(m):
+    """Calcola la massa difensiva mista assoluta di un Pokémon."""
+    return m["base_hp"] * (m["base_def"] + m["base_spd"])
+
 def move_eff(move, defender_name):
     try:
         return effectiveness(Type(move["type"]), *real_types(TIPI[defender_name]))
@@ -41,7 +45,7 @@ def static_features(b):
     p1_lead = next((m for m in team if m["name"] == p1_lead_name), team[0])
 
     holders = [m for m in team if m.get("item") == "leftovers"]
-    leftovers_bulk = sum(m["base_hp"] * (m["base_def"] + m["base_spd"]) for m in holders) / 1e4
+    leftovers_bulk = sum(mixed_bulk(m) for m in holders) / 1e4
 
     p1_atk_mean = np.mean([m["base_atk"] for m in team])
     p1_spa_mean = np.mean([m["base_spa"] for m in team])
@@ -107,11 +111,9 @@ def revealed_features(b):
     p1_spa_mean = np.mean([m["base_spa"] for m in team])
     p1_spd_mean = np.mean([m["base_spd"] for m in team])
 
-    # Offesa P1 vs Difesa stimata P2
     p1_phys_press = p1_atk_mean - p2_est["base_def"]
     p1_spec_press = p1_spa_mean - p2_est["base_spd"]
 
-    # Offesa stimata P2 vs Difesa P1
     p2_phys_press = p2_est["base_atk"] - p1_def_mean
     p2_spec_press = p2_est["base_spa"] - p1_spd_mean
 
@@ -119,8 +121,6 @@ def revealed_features(b):
     f["p1_spec_pressure_vs_p2team"] = p1_spec_press
     f["p2_phys_pressure_vs_p1team"] = p2_phys_press
     f["p2_spec_pressure_vs_p1team"] = p2_spec_press
-
-    # Differenziale di pressione netta tra i due team
     f["phys_pressure_net_diff"] = p1_phys_press - p2_phys_press
     f["spec_pressure_net_diff"] = p1_spec_press - p2_spec_press
 
@@ -207,15 +207,12 @@ def timeline_features(b):
     a, o = side_stats(tl, "p1", "p2"), side_stats(tl, "p2", "p1")
     d = a["hp"] - o["hp"]
 
-    # 1. Tracciamento Explosion / Self-Destruct
     p1_booms = sum(1 for t in tl if t.get("p1_move_details") and t["p1_move_details"].get("name") in ("explosion", "selfdestruct"))
     p2_booms = sum(1 for t in tl if t.get("p2_move_details") and t["p2_move_details"].get("name") in ("explosion", "selfdestruct"))
 
-    # 2. Tracciamento uso di Rest
     p1_rests = sum(1 for t in tl if t.get("p1_move_details") and t["p1_move_details"].get("name") == "rest")
     p2_rests = sum(1 for t in tl if t.get("p2_move_details") and t["p2_move_details"].get("name") == "rest")
 
-    # 3. Verifica Spikes attive a fine timeline per P1 e P2
     p1_spikes_end = False
     p2_spikes_end = False
     for t in tl:
@@ -225,20 +222,26 @@ def timeline_features(b):
         if m1 and m1.get("name") == "spikes": p2_spikes_end = True
         if m2 and m2.get("name") == "rapidspin": p2_spikes_end = False
 
-    # 4. Inerzia del Momentum HP (Ultimi 10 turni vs Primi 10 turni)
     trend_first10 = d[:10].mean() if len(d) >= 10 else d.mean()
     trend_last10 = d[-10:].mean() if len(d) >= 10 else d.mean()
     hp_momentum_trend = trend_last10 - trend_first10
 
-    # Tracciamento Snorlax
+    # Tracciamento dinamico del "Main Tank" (Sostituisce l'hardcoding su Snorlax)
     p1_team = b["p1_team_details"]
-    p1_has_lax = any(m.get("name") == "snorlax" for m in p1_team)
-    p1_lax_hp = a["last_hp"].get("snorlax", 1.0) if p1_has_lax else 0.0
+    p1_main_tank = max(p1_team, key=mixed_bulk)["name"]
+    p1_tank_hp = a["last_hp"].get(p1_main_tank, 1.0)
 
     p2_lead = b["p2_lead_details"]
-    seen = list(dict.fromkeys([p2_lead["name"]] + [t["p2_pokemon_state"]["name"] for t in tl]))
-    p2_has_lax = "snorlax" in seen
-    p2_lax_hp = o["last_hp"].get("snorlax", 1.0) if p2_has_lax else 0.0
+    seen_names = list(dict.fromkeys([p2_lead["name"]] + [t["p2_pokemon_state"]["name"] for t in tl]))
+    p2_seen_mons = [DB.get(name, GLOBAL) for name in seen_names]
+    
+    if p2_seen_mons:
+        p2_main_tank = max(p2_seen_mons, key=mixed_bulk)["name"]
+        # Se non è in last_hp, significa che non è mai sceso in campo dopo il lead,
+        # assumiamo che sia al 100% (1.0) se lo abbiamo visto come lead.
+        p2_tank_hp = o["last_hp"].get(p2_main_tank, 1.0)
+    else:
+        p2_tank_hp = 1.0 # Fallback se nessun team è visibile (raro)
 
     return {
         "p1_hp_mean": a["hp_mean"],
@@ -261,12 +264,13 @@ def timeline_features(b):
         "bp_diff": a["bp_mean"] - o["bp_mean"],
         "status_move_diff": a["status_move_frac"] - o["status_move_frac"],
         "move_eff_diff": a["move_eff"] - o["move_eff"],
-        "p1_snorlax_hp_last": p1_lax_hp,
-        "p2_snorlax_hp_seen": p2_lax_hp,
-        "snorlax_hp_diff": p1_lax_hp - p2_lax_hp,
+        
+        # Sostituzione delle feature di Snorlax con quelle del Main Tank
+        "p1_tank_hp_last": p1_tank_hp,
+        "p2_tank_hp_seen": p2_tank_hp,
+        "tank_hp_diff": p1_tank_hp - p2_tank_hp,
+        
         "spikes_switch_pressure": o["spikes_damage_est"] - a["spikes_damage_est"],
-
-        # NUOVE 4 MICRO-FEATURE TATTICHE 
         "boom_trade_diff": p1_booms - p2_booms,
         "rest_recovery_diff": p1_rests - p2_rests,
         "spikes_active_diff": int(p2_spikes_end) - int(p1_spikes_end),
