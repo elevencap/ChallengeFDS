@@ -34,31 +34,34 @@ def move_eff(move, defender_name):
 def has_quad_weakness(types, attacker_types=TYPES):
     return any(effectiveness(a, *types) >= 4 for a in attacker_types)
 
-def best_stab(att_types, def_types):
-    return max((effectiveness(t, *def_types) for t in att_types), default=1.0)
-
 # ---------- Feature Statiche ----------
 def static_features(b):
     team, lead = b["p1_team_details"], b["p2_lead_details"]
-    lead_types = real_types(lead["types"])
     p1_lead_name = b["battle_timeline"][0]["p1_pokemon_state"]["name"]
     p1_lead = next((m for m in team if m["name"] == p1_lead_name), team[0])
 
-    off = [max(effectiveness(t, *lead_types) for t in real_types(m["types"])) for m in team]
-    dfn = [max(effectiveness(t, *real_types(m["types"])) for t in lead_types) for m in team]
-
     holders = [m for m in team if m.get("item") == "leftovers"]
     leftovers_bulk = sum(m["base_hp"] * (m["base_def"] + m["base_spd"]) for m in holders) / 1e4
+
+    p1_atk_mean = np.mean([m["base_atk"] for m in team])
+    p1_spa_mean = np.mean([m["base_spa"] for m in team])
+    p1_def_mean = np.mean([m["base_def"] for m in team])
+    p1_spd_mean = np.mean([m["base_spd"] for m in team])
 
     f = {
         "p2_lead_name": lead.get("name", ""),
         "phys_bulk_diff": np.mean([phys_bulk(m) for m in team]) - phys_bulk(lead),
         "spec_bulk_diff": np.mean([spec_bulk(m) for m in team]) - spec_bulk(lead),
         "n_quad_weak": sum(has_quad_weakness(real_types(m["types"])) for m in team),
-        "team_off_vs_lead": np.mean(off),
-        "lead_off_vs_team": np.mean(dfn),
-        "matchup_diff": np.mean(off) - np.mean(dfn),
-        "leftovers_bulk": leftovers_bulk
+        "leftovers_bulk": leftovers_bulk,
+
+        # Feature di Pressione Incrociata (Offesa P1 vs Difesa Lead P2)
+        "team_phys_pressure_vs_lead": p1_atk_mean - lead["base_def"],
+        "team_spec_pressure_vs_lead": p1_spa_mean - lead["base_spd"],
+        "lead_phys_pressure_vs_lead": p1_lead["base_atk"] - lead["base_def"],
+        "lead_spec_pressure_vs_lead": p1_lead["base_spa"] - lead["base_spd"],
+        "lead_phys_pressure_vs_team": lead["base_atk"] - p1_def_mean,
+        "lead_spec_pressure_vs_team": lead["base_spa"] - p1_spd_mean,
     }
 
     for i, m in enumerate(team):
@@ -91,10 +94,35 @@ def revealed_features(b):
         "p2_n_seen": n_seen
     }
 
+    p2_est = {}
     for s in STATS:
         n = stat_name(s)
-        p2_est = (sum(m[s] for m in p2) + n_unknown * GLOBAL[s]) / total
-        f[f"p2team_{n}_diff"] = np.mean([m[s] for m in team]) - p2_est
+        est_val = (sum(m[s] for m in p2) + n_unknown * GLOBAL[s]) / total
+        p2_est[s] = est_val
+        f[f"p2team_{n}_diff"] = np.mean([m[s] for m in team]) - est_val
+
+    # Feature di Pressione Incrociata (Team vs Team Rivelato)
+    p1_atk_mean = np.mean([m["base_atk"] for m in team])
+    p1_def_mean = np.mean([m["base_def"] for m in team])
+    p1_spa_mean = np.mean([m["base_spa"] for m in team])
+    p1_spd_mean = np.mean([m["base_spd"] for m in team])
+
+    # Offesa P1 vs Difesa stimata P2
+    p1_phys_press = p1_atk_mean - p2_est["base_def"]
+    p1_spec_press = p1_spa_mean - p2_est["base_spd"]
+
+    # Offesa stimata P2 vs Difesa P1
+    p2_phys_press = p2_est["base_atk"] - p1_def_mean
+    p2_spec_press = p2_est["base_spa"] - p1_spd_mean
+
+    f["p1_phys_pressure_vs_p2team"] = p1_phys_press
+    f["p1_spec_pressure_vs_p2team"] = p1_spec_press
+    f["p2_phys_pressure_vs_p1team"] = p2_phys_press
+    f["p2_spec_pressure_vs_p1team"] = p2_spec_press
+
+    # Differenziale di pressione netta tra i due team
+    f["phys_pressure_net_diff"] = p1_phys_press - p2_phys_press
+    f["spec_pressure_net_diff"] = p1_spec_press - p2_spec_press
 
     p2_phys = (sum(phys_bulk(m) for m in p2) + n_unknown * phys_bulk(GLOBAL)) / total
     p2_spec = (sum(spec_bulk(m) for m in p2) + n_unknown * spec_bulk(GLOBAL)) / total
@@ -105,12 +133,6 @@ def revealed_features(b):
     f["p1_faster_than_seen_frac"] = np.mean(
         [[m["base_spe"] > sp for sp in p2_spe] for m in team]
     )
-
-    off = np.mean([[best_stab(at, dt) for dt in p2_types] for at in p1_types])
-    dfn = np.mean([[best_stab(at, dt) for dt in p1_types] for at in p2_types])
-    f["seen_off"] = off
-    f["seen_dfn"] = dfn
-    f["seen_matchup_diff"] = off - dfn
 
     p2_quad_weak_frac = np.mean([has_quad_weakness(t) for t in p2_types])
     p1_quad_weak_frac = np.mean([has_quad_weakness(t) for t in p1_types])
