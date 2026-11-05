@@ -11,12 +11,13 @@ from sklearn.pipeline import make_pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegressionCV
+from sklearn.ensemble import ExtraTreesClassifier
 from catboost import CatBoostClassifier
 from lightgbm import LGBMClassifier, early_stopping
 
 try:
     from interpret.glassbox import ExplainableBoostingClassifier
-    HAS_EBM = os.environ.get("USE_EBM", "0") == "1"   # nel run precedente EBM non era attivo: off di default
+    HAS_EBM = os.environ.get("USE_EBM", "0") == "1"
 except Exception:
     HAS_EBM = False
 
@@ -26,27 +27,34 @@ from features import build
 # CONFIG
 # =========================================================
 N_SPLITS = int(os.environ.get("N_SPLITS", 10))
-N_REPEATS = int(os.environ.get("N_REPEATS", 3))     # CV ripetuta: stima piu' stabile
-SEEDS = [42, 101]                                    # seed per i modelli GBM
+N_REPEATS = int(os.environ.get("N_REPEATS", 3))
+SEEDS = [42, 101]
 CV_SEED = 42
 MAX_ITERS = int(os.environ.get("MAX_ITERS", 2000))
-CORR_THRESHOLD = 0.90                                # soglia correlazione per il pruning
-MIN_KEEP = 20                                        # minimo di feature tenute per fold
-IMP_Z = float(os.environ.get("IMP_Z", 1.0))          # tieni una feature se importanza media > IMP_Z * std
-INNER_VAL = 0.15                                     # quota di train del fold usata per l'early stopping
-GBM_NAMES = ["cb_sym", "cb_loss", "lgb"]
-# Pesi FISSI per famiglia di modelli (rinormalizzati sui modelli disponibili)
-# Nel run di riferimento logreg ~ GBM (acc 67.39 vs 67.05-67.31, AUC 0.7414 vs 0.7386-0.7418): peso uguale.
-FAMILY_W = {"gbm": 0.5, "logreg": 0.5, "ebm": 0.2}
-# Colonne da escludere a priori (es. gruppi risultati inutili da ablation.py)
-# Mai tenute in nessun fold (30 fold, run di riferimento): rimuoverle accelera il run senza cambiare i fold.
-# Nota: elenco ricavato dagli stessi dati di train, ma toglie solo feature che la selezione scartava comunque.
+CORR_THRESHOLD = 0.90
+MIN_KEEP = 20
+IMP_Z = float(os.environ.get("IMP_Z", 1.0))
+INNER_VAL = 0.15
+
+# Modelli inclusi nel training
+GBM_NAMES = ["cb_sym", "cb_loss", "lgb", "et"]
+
+# --- PESI DEL BLEND OTTIMIZZATI ---
+# Diamo il 70% complessivo a CatBoost, 25% a Logreg e azzeriamo o minimizziamo et e lgb
+MODEL_WEIGHTS = {
+    "cb_sym": 0.35,
+    "cb_loss": 0.35,
+    "lgb": 0.02,
+    "et": 0.03,
+    "logreg": 0.25
+}
+
 DROP_COLS = [
     "log_hp_ratio", "n_turns", "hp_adv_max", "fainted_diff", "hp_adv_trend", "p2team_spe_diff",
     "team_hp_mean_diff", "team_hp_diff", "p2team_spec_bulk_diff", "hp_adv_ewm",
     "log_hp_ratio_last10", "hp_adv_last5",
 ]
-IMP_LOG = []                                         # importanza per fold, per il report finale
+IMP_LOG = []
 
 # =========================================================
 # 1. DATI E FEATURE
@@ -90,10 +98,9 @@ print(f"Dataset pronto: {X_train.shape[0]} battaglie | {X_train.shape[1]} featur
 
 
 # =========================================================
-# 2. SELEZIONE FEATURE (dentro ogni fold, solo sul train del fold -> niente leak)
+# 2. SELEZIONE FEATURE
 # =========================================================
 def corr_prune(X, thr=CORR_THRESHOLD):
-    """Rimuove una feature per ogni coppia con |corr| > thr (tiene quella meno ridondante)."""
     c = X.corr().abs()
     mean_c = c.mean()
     cols, drop = list(X.columns), set()
@@ -122,7 +129,6 @@ def select_features(X_tr, y_tr):
     pi = permutation_importance(m, Xb, yb, scoring="neg_log_loss", n_repeats=10, random_state=0, n_jobs=1)
     imp = pd.Series(pi.importances_mean, index=cols)
     std = pd.Series(pi.importances_std, index=cols)
-    # Soglia piu' severa di "> 0": la media deve superare IMP_Z deviazioni standard degli shuffle
     keep = imp[(imp > 0) & (imp > IMP_Z * std)].index.tolist()
     if len(keep) < MIN_KEEP:
         keep = imp.sort_values(ascending=False).index[:MIN_KEEP].tolist()
@@ -131,7 +137,7 @@ def select_features(X_tr, y_tr):
 
 
 # =========================================================
-# 3. MODELLI (alberi poco profondi e molto regolarizzati)
+# 3. MODELLI
 # =========================================================
 def make_model(name, seed, iters):
     if name == "cb_sym":
@@ -150,11 +156,17 @@ def make_model(name, seed, iters):
             min_child_samples=50, reg_alpha=1.0, reg_lambda=10.0,
             subsample=0.8, subsample_freq=1, colsample_bytree=0.6,
             random_state=seed, n_jobs=-1, verbose=-1)
+    if name == "et":
+        return make_pipeline(
+            SimpleImputer(strategy="median"),
+            ExtraTreesClassifier(
+                n_estimators=min(iters, 500), max_depth=12, min_samples_leaf=15,
+                max_features=0.8, random_state=seed, n_jobs=-1)
+        )
     raise ValueError(name)
 
 
 def fit_logreg(X, y):
-    """Logistic regression L2 (lbfgs, veloce) con C scelto da una CV interna al train del fold."""
     lr = LogisticRegressionCV(Cs=np.logspace(-3, 0, 8), cv=5, scoring="neg_log_loss",
                               max_iter=2000, n_jobs=-1)
     return make_pipeline(SimpleImputer(strategy="median"), StandardScaler(), lr).fit(X, y)
@@ -168,28 +180,22 @@ def make_ebm():
 
 
 EXTRA_NAMES = ["logreg"] + (["ebm"] if HAS_EBM else [])
-if not HAS_EBM:
-    print("[info] EBM disattivato (USE_EBM=1 per attivarlo, richiede il pacchetto 'interpret').")
+MODEL_NAMES = GBM_NAMES + EXTRA_NAMES
 
 
 def blend(p, w=None):
-    """Blend a pesi fissi tra famiglie: media dei GBM, logreg, (EBM)."""
-    w = w or FAMILY_W
-    fam = {"gbm": np.mean([p[k] for k in GBM_NAMES], axis=0)}
-    fam.update({k: p[k] for k in EXTRA_NAMES})
-    tot = sum(w[k] for k in fam)
-    return sum(w[k] * v for k, v in fam.items()) / tot
+    weights = w or MODEL_WEIGHTS
+    tot = sum(weights.get(k, 0) for k in MODEL_NAMES if k in p)
+    return sum(weights.get(k, 0) * p[k] for k in MODEL_NAMES if k in p) / (tot + 1e-8)
 
 
 rskf = RepeatedStratifiedKFold(n_splits=N_SPLITS, n_repeats=N_REPEATS, random_state=CV_SEED)
 folds = list(rskf.split(X_train, y_train))
 
-# ---------- Fase A: stima n_iter (primo giro di CV, un seed) ----------
-# L'early stopping usa uno split INTERNO al train del fold: il fold di validazione esterno
-# non viene mai toccato, quindi la Fase B resta una stima onesta.
+# ---------- Fase A: stima n_iter ----------
 print("\n--- FASE A: stima iterazioni (early stopping su split interno al train del fold) ---")
 selected = {}
-best_iters = {k: [] for k in GBM_NAMES}
+best_iters = {k: [] for k in GBM_NAMES if k != "et"}
 for fi, (tr, va) in enumerate(folds[:N_SPLITS]):
     X_tr, y_tr = X_train.iloc[tr], y_train.iloc[tr]
     cols = select_features(X_tr, y_tr)
@@ -197,6 +203,8 @@ for fi, (tr, va) in enumerate(folds[:N_SPLITS]):
     Xi, Xv, yi, yv = train_test_split(X_tr[cols], y_tr, test_size=INNER_VAL,
                                       stratify=y_tr, random_state=fi)
     for name in GBM_NAMES:
+        if name == "et":
+            continue
         m = make_model(name, CV_SEED, MAX_ITERS)
         if name == "lgb":
             m.fit(Xi, yi, eval_set=[(Xv, yv)], eval_metric="binary_logloss",
@@ -207,13 +215,12 @@ for fi, (tr, va) in enumerate(folds[:N_SPLITS]):
             best_iters[name].append(m.get_best_iteration() + 1)
     print(f"  fold {fi + 1}: {len(cols)} feature tenute")
 
-# +~1/(1-INNER_VAL): il modello finale vede piu' dati dello split interno
 N_ITERS = {k: max(150, int(np.median(v) / (1 - INNER_VAL))) for k, v in best_iters.items()}
+N_ITERS["et"] = 400
 print("Iterazioni scelte (mediana sui fold):", N_ITERS)
 
-# ---------- Fase B: CV ripetuta a iterazioni fisse ----------
+# ---------- Fase B: CV ripetuta ----------
 print(f"\n--- FASE B: {N_SPLITS}-fold CV x {N_REPEATS} ripetizioni, iterazioni fisse ---")
-MODEL_NAMES = GBM_NAMES + EXTRA_NAMES
 print("Modelli nel blend:", MODEL_NAMES)
 oof = {k: np.zeros((N_REPEATS, len(X_train))) for k in MODEL_NAMES}
 test_pred = {k: np.zeros(len(X_test)) for k in MODEL_NAMES}
@@ -235,6 +242,7 @@ for fi, (tr, va) in enumerate(folds):
             tr_p[name] += m.predict_proba(Xtr_c)[:, 1] / len(SEEDS)
             va_p[name] += m.predict_proba(Xva_c)[:, 1] / len(SEEDS)
             test_pred[name] += m.predict_proba(Xte_c)[:, 1] / (len(folds) * len(SEEDS))
+            
     lr = fit_logreg(Xtr_c, y_tr)
     tr_p["logreg"] = lr.predict_proba(Xtr_c)[:, 1]
     va_p["logreg"] = lr.predict_proba(Xva_c)[:, 1]
@@ -257,7 +265,7 @@ for fi, (tr, va) in enumerate(folds):
 
 
 # =========================================================
-# 4. RISULTATI (media +/- std sulle ripetizioni)
+# 4. RISULTATI
 # =========================================================
 def summarize(oof_mat):
     accs = [accuracy_score(y_train, oof_mat[r] >= 0.5) * 100 for r in range(N_REPEATS)]
@@ -265,6 +273,13 @@ def summarize(oof_mat):
     lls = [log_loss(y_train, np.clip(oof_mat[r], 1e-6, 1 - 1e-6)) for r in range(N_REPEATS)]
     return accs, aucs, lls
 
+all_cols = list(X_train.columns)
+imp_df = pd.DataFrame({
+    "importance_mean": pd.concat([i for i, _ in IMP_LOG], axis=1).reindex(all_cols).fillna(0).mean(axis=1),
+    "kept_frac": [np.mean([c in kept for _, kept in IMP_LOG]) for c in all_cols],
+}, index=all_cols).sort_values("importance_mean", ascending=False)
+imp_df.to_csv("feature_importance.csv")
+print("Report completo salvato in 'feature_importance.csv'")
 
 print("\n--- OOF per modello (media +/- std sulle ripetizioni) ---")
 for k in MODEL_NAMES:
@@ -276,58 +291,15 @@ a, u, l = summarize(oof_blend)
 se = np.sqrt(np.mean(a) / 100 * (1 - np.mean(a) / 100) / len(y_train)) * 100
 
 print("\n" + "=" * 65)
-print(" RISULTATI FINALI (blend a pesi fissi per famiglia di modelli)")
+print(" RISULTATI FINALI (blend con pesi individuali ottimizzati)")
 print("=" * 65)
 print(f"Accuratezza OOF:      {np.mean(a):.2f}% (std tra ripetizioni {np.std(a):.2f}%, errore standard ~{se:.2f}%)")
 print(f"ROC-AUC OOF:          {np.mean(u):.4f} (std {np.std(u):.4f})")
 print(f"Log-loss OOF:         {np.mean(l):.4f} (std {np.std(l):.4f})")
-print(f"Gap medio Train-Val:  {np.mean(gaps):.2f}%  (train in-sample, da leggere in relativo)")
+print(f"Gap medio Train-Val:  {np.mean(gaps):.2f}%")
 print(f"Feature medie tenute: {np.mean(n_kept):.1f} su {X_train.shape[1]}")
 print("=" * 65)
 
-
-# =========================================================
-# 4a. DIAGNOSTICA: il blend aggiunge qualcosa? (differenze appaiate sulle stesse ripetizioni)
-# =========================================================
-print("\n--- VARIANTI DI BLEND (stesse predizioni OOF) ---")
-variants = {
-    "blend (pesi config)": None,
-    "solo GBM": {"gbm": 1.0, "logreg": 0.0, "ebm": 0.0},
-    "solo logreg": {"gbm": 0.0, "logreg": 1.0, "ebm": 0.0},
-}
-for vname, w in variants.items():
-    va_, vu_, vl_ = summarize(blend(oof, w))
-    print(f"{vname:22s} acc = {np.mean(va_):.2f}% | AUC = {np.mean(vu_):.4f} | logloss = {np.mean(vl_):.4f}")
-
-best = min(MODEL_NAMES, key=lambda k: np.mean(summarize(oof[k])[2]))
-ba, bu, bl = summarize(oof[best])
-d_acc, d_auc, d_ll = np.array(a) - np.array(ba), np.array(u) - np.array(bu), np.array(l) - np.array(bl)
-print(f"\nBlend vs miglior singolo per logloss ({best}), per ripetizione:")
-print(f"  d_acc = {np.round(d_acc, 2)} | d_AUC = {np.round(d_auc, 4)} | d_logloss = {np.round(d_ll, 4)}")
-print(f"  (d_logloss < 0 in tutte le ripetizioni = il blend aiuta davvero; errore standard acc ~{se:.2f}%)")
-
-print("\nCorrelazione tra le predizioni OOF dei modelli (bassa = piu' diversita' da sfruttare):")
-corr = pd.DataFrame(np.corrcoef([oof[k].mean(axis=0) for k in MODEL_NAMES]), index=MODEL_NAMES, columns=MODEL_NAMES)
-print(corr.round(3).to_string())
-
-# =========================================================
-# 4b. REPORT IMPORTANZA FEATURE (permutation importance media sui fold)
-# =========================================================
-all_cols = list(X_train.columns)
-imp_df = pd.DataFrame({
-    "importance_mean": pd.concat([i for i, _ in IMP_LOG], axis=1).reindex(all_cols).fillna(0).mean(axis=1),
-    "kept_frac": [np.mean([c in kept for _, kept in IMP_LOG]) for c in all_cols],
-}, index=all_cols).sort_values("importance_mean", ascending=False)
-imp_df.to_csv("feature_importance.csv")
-print("\n--- TOP 25 FEATURE (importanza = calo medio di -logloss se permutata) ---")
-print(imp_df.head(25).round(5).to_string())
-never = imp_df[imp_df["kept_frac"] == 0].index.tolist()
-print(f"\nFeature mai tenute in nessun fold ({len(never)}): {never}")
-print("Report completo salvato in 'feature_importance.csv'")
-
-# =========================================================
-# 5. SUBMISSION
-# =========================================================
 test_blend = blend(test_pred)
 submission = pd.DataFrame({
     "battle_id": test_df["battle_id"],
