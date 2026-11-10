@@ -226,22 +226,22 @@ def timeline_features(b):
     trend_last10 = d[-10:].mean() if len(d) >= 10 else d.mean()
     hp_momentum_trend = trend_last10 - trend_first10
 
-    # Tracciamento dinamico del "Main Tank" (Sostituisce l'hardcoding su Snorlax)
+    # Tracciamento dinamico del "Main Tank" di P1 (disponibile nei dettagli)
     p1_team = b["p1_team_details"]
-    p1_main_tank = max(p1_team, key=mixed_bulk)["name"]
+    p1_main_tank = max(p1_team, key=mixed_bulk).get("name", "unknown")
     p1_tank_hp = a["last_hp"].get(p1_main_tank, 1.0)
 
+    # Tracciamento dinamico del "Main Tank" di P2 basato sui Pokémon rivelati (lead + timeline)
     p2_lead = b["p2_lead_details"]
     seen_names = list(dict.fromkeys([p2_lead["name"]] + [t["p2_pokemon_state"]["name"] for t in tl]))
     p2_seen_mons = [DB.get(name, GLOBAL) for name in seen_names]
     
     if p2_seen_mons:
-        p2_main_tank = max(p2_seen_mons, key=mixed_bulk)["name"]
-        # Se non è in last_hp, significa che non è mai sceso in campo dopo il lead,
-        # assumiamo che sia al 100% (1.0) se lo abbiamo visto come lead.
-        p2_tank_hp = o["last_hp"].get(p2_main_tank, 1.0)
+        p2_main_tank_data = max(p2_seen_mons, key=mixed_bulk)
+        p2_main_tank_name = p2_main_tank_data.get("name", "unknown")
+        p2_tank_hp = o["last_hp"].get(p2_main_tank_name, 1.0)
     else:
-        p2_tank_hp = 1.0 # Fallback se nessun team è visibile (raro)
+        p2_tank_hp = 1.0 # Fallback di sicurezza
 
     return {
         "p1_hp_mean": a["hp_mean"],
