@@ -5,10 +5,8 @@ import numpy as np
 STATS = ["base_hp", "base_atk", "base_def", "base_spa", "base_spd", "base_spe"]
 
 
-def build_db(paths=("train.jsonl", "test.jsonl"),
-             tipi_path="pokemon_tipi.json", out_path="pokemon_db.json"):
-    with open(tipi_path, encoding="utf-8") as fh:
-        tipi = json.load(fh)
+def build_db(paths=("train.jsonl", "test.jsonl"), out_path="pokemon_db.json"):
+    """Stats and types of every species observed in the competition data (no external sources)."""
 
     vals = defaultdict(lambda: {s: [] for s in STATS})   # nome -> stat osservate
     types = {}
@@ -50,11 +48,11 @@ def build_db(paths=("train.jsonl", "test.jsonl"),
             entry["top_item"] = items[name].most_common(1)[0][0]
         db[name] = entry
 
-    # specie viste solo in timeline: tipi dal vecchio json, stat da riempire con la media globale
+    # specie viste solo in timeline: tipi sconosciuti, stat riempite con la media globale
     missing = [n for n in n_p2_seen if n not in db]
     glob = {s: float(np.mean([e[s] for e in db.values()])) for s in STATS}
     for name in missing:
-        db[name] = {"types": tipi.get(name, ["notype", "notype"]), **glob,
+        db[name] = {"types": ["notype", "notype"], **glob,
                     "n_p1_team": 0, "n_p2_lead": 0, "n_p2_seen": n_p2_seen[name],
                     "stats_imputed": True}
 

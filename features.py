@@ -237,8 +237,8 @@ def timeline_features(b):
     p2_seen_mons = [DB.get(name, GLOBAL) for name in seen_names]
     
     if p2_seen_mons:
-        p2_main_tank_data = max(p2_seen_mons, key=mixed_bulk)
-        p2_main_tank_name = p2_main_tank_data.get("name", "unknown")
+        # il DB non contiene il campo "name": il tank si sceglie direttamente sui nomi visti
+        p2_main_tank_name = max(seen_names, key=lambda n: mixed_bulk(DB.get(n, GLOBAL)))
         p2_tank_hp = o["last_hp"].get(p2_main_tank_name, 1.0)
     else:
         p2_tank_hp = 1.0 # Fallback di sicurezza
